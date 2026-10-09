@@ -1,2 +1,4 @@
-# Python 3.13.7 (probado). Manim Community requiere Python >= 3.10.
+# Python 3.13.7: entorno de ejecución; se instala por separado.
+# unittest: pruebas unitarias; incluido en la biblioteca estándar de Python.
+# Manim Community 0.22.0: animaciones matemáticas; se instala con pip.
 manim==0.22.0

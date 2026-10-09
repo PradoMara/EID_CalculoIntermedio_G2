@@ -1,6 +1,6 @@
 # Tareas de Daniel Prado
 
-## [ ] T-001 — Instalar dependencias y configurar el proyecto
+## [x] T-001 — Instalar dependencias y configurar el proyecto
 - Prioridad: alta: habilita el código de los tres
 - Detalles: Consultar documentación oficial, elegir versiones compatibles de Python/Manim y preparar entorno local, dependencias, configuración de render y ejecución de pruebas. Usar unittest de Python como opción inicial sin dependencia adicional; si el equipo necesita otra herramienta, documentarla. Crear estructura modular e instrucciones, revisar .gitignore. No incluir secretos ni el entorno virtual. Entregar: requirements.txt, configuración necesaria, paquetes src/tests, README inicial e investigacion/configuracion_daniel.md.
 - Criterios de aceptación:
