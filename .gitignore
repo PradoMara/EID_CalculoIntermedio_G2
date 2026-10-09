@@ -218,3 +218,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Proyecto Manim: renders, cach?s y salidas locales
+media/
+*.mp4
+*.mov
+*.wav
+*.mp3
+tex_cache/
+

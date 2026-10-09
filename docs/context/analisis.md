@@ -412,3 +412,4 @@ Para participación, aplicar el acuerdo existente: aviso anticipado de dificulta
 5. Definir entorno de ejecución, escenas, reparto de voces y herramienta de edición.
 
 Con esas decisiones se puede pasar a cálculos y guion, luego a Manim, audio y edición, documentación final y preparación de la defensa.
+x

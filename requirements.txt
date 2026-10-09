@@ -1,0 +1,2 @@
+# Python 3.13.7 (probado). Manim Community requiere Python >= 3.10.
+manim==0.22.0
