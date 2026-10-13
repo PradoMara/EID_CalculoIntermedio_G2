@@ -43,12 +43,16 @@ Trabajaremos directamente en `main`, coordinando cambios en archivos compartidos
 - [Tareas de Daniel Prado](tasks/dprado.md).
 - [Tareas de Sebastian Pereda](tasks/spereda.md).
 - [Tareas de Rodrigo Pedraza](tasks/rpedraza.md).
+- [Guía de estudio paso a paso de Rodrigo](docs/guia_estudio_rodrigo.md).
+- [Investigación de interpretación de Rodrigo](investigacion/interpretacion_rodrigo.md).
+- [Informe de avance de Rodrigo](informes/rpedraza.md).
+- [Declaración de IA y recursos](declaracion_ia.md).
 
 Se permite usar IA, declarando la herramienta, la finalidad, las partes apoyadas y las verificaciones humanas realizadas. Cada integrante debe comprender y poder explicar sus aportes.
 
 ## Estado y ejecución
 
-La función y la partición principal ya están elegidas. La implementación de módulos, las pruebas del producto y el video están pendientes (T-002 en adelante). El entorno ya está configurado (T-001); detalles y decisiones en [investigacion/configuracion_daniel.md](investigacion/configuracion_daniel.md).
+La función y la partición principal ya están elegidas. El módulo de comparación, sus pruebas aisladas y tres escenas de Rodrigo están preparados. Un render con dobles temporales funcionó; la integración y el render con los módulos reales de Daniel y Sebastian, y el video, siguen pendientes. El entorno fue configurado en T-001; detalles y decisiones en [investigacion/configuracion_daniel.md](investigacion/configuracion_daniel.md).
 
 ### Versiones verificadas
 
@@ -78,7 +82,7 @@ En Linux/macOS, activar con `source .venv/bin/activate`; Manim requiere además 
 python -m unittest discover -s tests -t . -v
 ```
 
-Con el entorno activado. Hoy solo existe `tests/test_entorno.py`, que comprueba dependencias; **no valida la matemática del producto**. Las pruebas del producto llegan con `test_matematica.py`, `test_datos_rectangulos.py` y `test_comparacion.py`.
+Con el entorno activado. `test_entorno.py` comprueba dependencias. `test_comparacion.py` prueba la lógica de Rodrigo mediante un doble de la interfaz matemática mientras se agrega `src/matematica.py`; su prueba de integración real queda omitida hasta entonces. Las pruebas del modelo y de datos visuales siguen pendientes.
 
 ### Render
 
