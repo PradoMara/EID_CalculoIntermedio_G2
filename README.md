@@ -78,7 +78,9 @@ En Linux/macOS, activar con `source .venv/bin/activate`; Manim requiere además 
 python -m unittest discover -s tests -t . -v
 ```
 
-Con el entorno activado. Hoy solo existe `tests/test_entorno.py`, que comprueba dependencias; **no valida la matemática del producto**. Las pruebas del producto llegan con `test_matematica.py`, `test_datos_rectangulos.py` y `test_comparacion.py`.
+Con el entorno activado. `tests/test_entorno.py` comprueba dependencias y `tests/test_matematica.py` valida `funcion_ejemplo` y los datos compartidos de T-022. Las pruebas de las demás funciones matemáticas, `test_datos_rectangulos.py` y `test_comparacion.py` siguen pendientes.
+
+El ejemplo principal se define en `src/matematica.py`: `funcion_ejemplo`, `PARTICION_EJEMPLO`, `INTERVALO_EJEMPLO` y `N_SUBINTERVALOS_EJEMPLO`. Los módulos deben importar estos datos compartidos.
 
 ### Render
 
