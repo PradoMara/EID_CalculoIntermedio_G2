@@ -18,14 +18,14 @@
   - [x] La función acepta valores numéricos del intervalo y tiene documentada su entrada/salida.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [ ] T-023 — Crear la función `validar_particion(particion)`
+## [x] T-023 — Crear la función `validar_particion(particion)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Comprobar una secuencia numérica finita de al menos dos puntos estrictamente crecientes; rechazar entradas inválidas con ValueError. Entregar: src/matematica.py. Requiere: T-001 en dprado.md.
 - Criterios de aceptación:
-  - [ ] Aceptar [0,0.5,1,1.5,2] y una partición no uniforme.
-  - [ ] Rechazar secuencias vacías, un punto, duplicados, desorden, valores no numéricos, NaN e infinito.
-  - [ ] No modificar la secuencia recibida.
-  - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
+  - [x] Aceptar [0,0.5,1,1.5,2] y una partición no uniforme.
+  - [x] Rechazar secuencias vacías, un punto, duplicados, desorden, valores no numéricos, NaN e infinito.
+  - [x] No modificar la secuencia recibida.
+  - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [ ] T-024 — Crear la función `crear_particion_uniforme(a, b, n)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
