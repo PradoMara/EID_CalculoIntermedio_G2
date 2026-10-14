@@ -43,12 +43,16 @@ Trabajaremos directamente en `main`, coordinando cambios en archivos compartidos
 - [Tareas de Daniel Prado](tasks/dprado.md).
 - [Tareas de Sebastian Pereda](tasks/spereda.md).
 - [Tareas de Rodrigo Pedraza](tasks/rpedraza.md).
+- [Guía de estudio paso a paso de Rodrigo](docs/guia_estudio_rodrigo.md).
+- [Investigación de interpretación de Rodrigo](investigacion/interpretacion_rodrigo.md).
+- [Informe de avance de Rodrigo](informes/rpedraza.md).
+- [Declaración de IA y recursos](declaracion_ia.md).
 
 Se permite usar IA, declarando la herramienta, la finalidad, las partes apoyadas y las verificaciones humanas realizadas. Cada integrante debe comprender y poder explicar sus aportes.
 
 ## Estado y ejecución
 
-La función y la partición principal ya están elegidas. La implementación de módulos, las pruebas del producto y el video están pendientes (T-002 en adelante). El entorno ya está configurado (T-001); detalles y decisiones en [investigacion/configuracion_daniel.md](investigacion/configuracion_daniel.md).
+La función y la partición principal ya están elegidas. El módulo de comparación, sus pruebas aisladas y tres escenas de Rodrigo están preparados. Un render con dobles temporales funcionó; la integración y el render con los módulos reales de Daniel y Sebastian, y el video, siguen pendientes. El entorno fue configurado en T-001; detalles y decisiones en [investigacion/configuracion_daniel.md](investigacion/configuracion_daniel.md).
 
 ### Versiones verificadas
 
