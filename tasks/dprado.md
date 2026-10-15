@@ -10,22 +10,22 @@
   - [ ] README permite preparar otro equipo y explica las rutas de módulos; entorno/cachés no se suben.
   - [ ] Documento breve explica decisiones, documentación consultada y comandos reales.
 
-## [ ] T-022 — Crear la función `funcion_ejemplo(x)`
+## [x] T-022 — Crear la función `funcion_ejemplo(x)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Devolver x²+1; definir los datos del ejemplo principal en una sola ubicación, sin importar Manim. Entregar: src/matematica.py. Requiere: T-001 en dprado.md.
 - Criterios de aceptación:
-  - [ ] f(0)=1, f(0.5)=1.25, f(1)=2, f(1.5)=3.25 y f(2)=5.
-  - [ ] La función acepta valores numéricos del intervalo y tiene documentada su entrada/salida.
-  - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
+  - [x] f(0)=1, f(0.5)=1.25, f(1)=2, f(1.5)=3.25 y f(2)=5.
+  - [x] La función acepta valores numéricos del intervalo y tiene documentada su entrada/salida.
+  - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [ ] T-023 — Crear la función `validar_particion(particion)`
+## [x] T-023 — Crear la función `validar_particion(particion)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Comprobar una secuencia numérica finita de al menos dos puntos estrictamente crecientes; rechazar entradas inválidas con ValueError. Entregar: src/matematica.py. Requiere: T-001 en dprado.md.
 - Criterios de aceptación:
-  - [ ] Aceptar [0,0.5,1,1.5,2] y una partición no uniforme.
-  - [ ] Rechazar secuencias vacías, un punto, duplicados, desorden, valores no numéricos, NaN e infinito.
-  - [ ] No modificar la secuencia recibida.
-  - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
+  - [x] Aceptar [0,0.5,1,1.5,2] y una partición no uniforme.
+  - [x] Rechazar secuencias vacías, un punto, duplicados, desorden, valores no numéricos, NaN e infinito.
+  - [x] No modificar la secuencia recibida.
+  - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [ ] T-024 — Crear la función `crear_particion_uniforme(a, b, n)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
@@ -65,6 +65,7 @@
   - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [ ] T-003 — Escribir pruebas unitarias del modelo matemático
+- Avance T-022: `tests/test_matematica.py` incluye los cinco valores acordados, un punto interior adicional, entradas Decimal/Fraction y los datos compartidos del ejemplo. Las pruebas de las funciones restantes siguen pendientes.
 - Prioridad: alta: evita propagar errores a las escenas
 - Detalles: Crear tests/test_matematica.py con casos separados para funcion_ejemplo, validar_particion, crear_particion_uniforme, seleccionar_muestra, calcular_rectangulos y suma_riemann. Ejecutarlos y corregir errores para asegurar funcionamiento correcto. Entregar: Pruebas y evidencia en informes/dprado.md. Requiere: T-022 a T-026 y T-002 en dprado.md: funciones matemáticas y suma.
 - Criterios de aceptación:
