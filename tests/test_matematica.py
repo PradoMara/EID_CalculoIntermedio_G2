@@ -12,6 +12,7 @@ from src.matematica import (
     crear_particion_uniforme,
     funcion_ejemplo,
     seleccionar_muestra,
+    suma_riemann,
     validar_particion,
 )
 
@@ -153,6 +154,30 @@ class TestCalcularRectangulos(unittest.TestCase):
             calcular_rectangulos(funcion_ejemplo, PARTICION_EJEMPLO, "centro")
         with self.assertRaises(ValueError):
             calcular_rectangulos(funcion_ejemplo, (1, 1), "izquierda")
+
+class TestSumaRiemann(unittest.TestCase):
+    def test_ejemplo(self):
+        self.assertEqual(suma_riemann(funcion_ejemplo, PARTICION_EJEMPLO, "izquierda"), 3.75)
+        self.assertEqual(suma_riemann(funcion_ejemplo, PARTICION_EJEMPLO, "derecha"), 5.75)
+
+    def test_particion_no_uniforme(self):
+        # izquierda: f(0)*1 + f(1)*2 = 1 + 4 = 5 ; derecha: f(1)*1 + f(3)*2 = 2 + 20
+        self.assertEqual(suma_riemann(funcion_ejemplo, (0, 1, 3), "izquierda"), 5)
+        self.assertEqual(suma_riemann(funcion_ejemplo, (0, 1, 3), "derecha"), 22)
+
+    def test_constante_creciente_decreciente(self):
+        p = (0, 1, 2)
+        self.assertEqual(suma_riemann(lambda x: 3, p, "izquierda"), 6)
+        creciente = lambda x: x
+        decreciente = lambda x: -x
+        self.assertLess(suma_riemann(creciente, p, "izquierda"), suma_riemann(creciente, p, "derecha"))
+        self.assertGreater(suma_riemann(decreciente, p, "izquierda"), suma_riemann(decreciente, p, "derecha"))
+
+    def test_propaga_errores(self):
+        with self.assertRaises(ValueError):
+            suma_riemann(funcion_ejemplo, PARTICION_EJEMPLO, "centro")
+        with self.assertRaises(ValueError):
+            suma_riemann(funcion_ejemplo, (2, 1), "izquierda")
 
 if __name__ == "__main__":
     unittest.main()

@@ -103,3 +103,12 @@ def calcular_rectangulos(funcion, particion, criterio):
             "aporte": altura * ancho,
         })
     return registros
+
+def suma_riemann(funcion, particion, criterio):
+    """Devuelve la suma de Riemann (número) de funcion sobre particion.
+
+    Suma los aportes de calcular_rectangulos usando el ancho real de cada
+    subintervalo. criterio es 'izquierda' o 'derecha'. Propaga los
+    ValueError de calcular_rectangulos.
+    """
+    return sum(r["aporte"] for r in calcular_rectangulos(funcion, particion, criterio))

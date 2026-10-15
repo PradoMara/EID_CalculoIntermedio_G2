@@ -55,14 +55,14 @@
   - [x] No modificar la partición ni depender del render; documentar el formato compartido.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [ ] T-002 — Crear la función `suma_riemann(funcion, particion, criterio)`
+## [x] T-002 — Crear la función `suma_riemann(funcion, particion, criterio)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Sumar los aportes obtenidos con calcular_rectangulos y devolver el total numérico. Esta función completa el modelo matemático desglosado en T-022 a T-026. Entregar: src/matematica.py. Requiere: T-026 en dprado.md; T-005 en spereda.md como respaldo de cálculos.
 - Criterios de aceptación:
-  - [ ] Obtener 3.75 por izquierda y 5.75 por derecha para el ejemplo.
-  - [ ] Funcionar con partición no uniforme usando cada ancho real.
-  - [ ] No duplicar selección de muestras ni construcción de registros; propagar errores claros.
-  - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
+  - [x] Obtener 3.75 por izquierda y 5.75 por derecha para el ejemplo.
+  - [x] Funcionar con partición no uniforme usando cada ancho real.
+  - [x] No duplicar selección de muestras ni construcción de registros; propagar errores claros.
+  - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [ ] T-003 — Escribir pruebas unitarias del modelo matemático
 - Avance T-022: `tests/test_matematica.py` incluye los cinco valores acordados, un punto interior adicional, entradas Decimal/Fraction y los datos compartidos del ejemplo. Las pruebas de las funciones restantes siguen pendientes.
