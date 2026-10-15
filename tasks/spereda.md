@@ -1,24 +1,24 @@
 # Tareas de Sebastian Pereda
 
-## [ ] T-005 — Investigar fundamentos y verificar el ejemplo elegido
+## [x] T-005 — Investigar fundamentos y verificar el ejemplo elegido
 - Prioridad: alta: fija los datos antes de programar
 - Detalles: Leer apunte y una fuente matemática complementaria identificable. Desarrollar cálculos manuales para el ejemplo confirmado: f(x)=x²+1, [0,2], n=4, Δx=0.5 y P={0,0.5,1,1.5,2}. La elección ya está aprobada por Daniel; documentar y comprobar los resultados, sin volver a solicitar su selección. Entregar: investigacion/fundamentos_sebastian.md y guion/calculos.md.
 - Criterios de aceptación:
-  - [ ] Fuente realmente consultada con autor/institución, título, año disponible, enlace/sección y afirmaciones respaldadas.
-  - [ ] Definir función, intervalo, partición, n, anchos, muestra, altura y aporte.
-  - [ ] Ejemplo coincidente con README; cálculos y tabla completa verificables por Daniel/Rodrigo.
-  - [ ] Resultados esperados: L=3.75,R=5.75,diferencia=2 y referencia exacta 14/3 como verificación.
-  - [ ] Distinguir mismas bases de mismas alturas; no copiar apunte como único desarrollo.
+  - [x] Fuente realmente consultada con autor/institución, título, año disponible, enlace/sección y afirmaciones respaldadas.
+  - [x] Definir función, intervalo, partición, n, anchos, muestra, altura y aporte.
+  - [x] Ejemplo coincidente con README; cálculos y tabla completa verificables por Daniel/Rodrigo.
+  - [x] Resultados esperados: L=3.75,R=5.75,diferencia=2 y referencia exacta 14/3 como verificación.
+  - [x] Distinguir mismas bases de mismas alturas; no copiar apunte como único desarrollo.
 
-## [ ] T-010 — Investigar Manim y documentar la representación
+## [x] T-010 — Investigar Manim y documentar la representación
 - Prioridad: alta: previene errores de coordenadas y bases
 - Detalles: Consultar documentación oficial de Manim Community, coordinar compatibilidad con versiones que fije Daniel. Explicar conversión de coordenadas y mantenimiento de bases. Proponer archivos visuales separados de datos matemáticos. Entregar: investigacion/manim_sebastian.md. Requiere: Ninguna para investigar; aplicar hallazgos a la versión real cuando T-001 se complete.
 - Criterios de aceptación:
-  - [ ] Referencia oficial identificada y consultada; registrar qué se aplicará.
-  - [ ] Explicar ejes, escala, ubicación de muestra y rectángulo sobre [x_i-1,x_i].
-  - [ ] Distinguir coordenadas matemáticas y dimensiones de pantalla.
-  - [ ] Documentar etiquetas, colores accesibles y cómo se revisará el render.
-  - [ ] Código adaptado con procedencia; no afirmar que una API se probó antes de ejecutarla.
+  - [x] Referencia oficial identificada y consultada; registrar qué se aplicará.
+  - [x] Explicar ejes, escala, ubicación de muestra y rectángulo sobre [x_i-1,x_i].
+  - [x] Distinguir coordenadas matemáticas y dimensiones de pantalla.
+  - [x] Documentar etiquetas, colores accesibles y cómo se revisará el render.
+  - [x] Código adaptado con procedencia; no afirmar que una API se probó antes de ejecutarla.
 
 ## [ ] T-006 — Integrar guion, fuentes y reparto de voces
 - Prioridad: alta: alinea matemáticas, escenas y audio
