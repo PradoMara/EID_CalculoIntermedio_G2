@@ -52,3 +52,23 @@ def crear_particion_uniforme(a, b, n):
     puntos = [a + (b - a) * i / n for i in range(n)]
     puntos.append(b)
     return validar_particion(puntos)
+
+CRITERIOS_MUESTRA = ("izquierda", "derecha")
+
+
+def seleccionar_muestra(izquierda, derecha, criterio):
+    """Devuelve el punto de muestra de un subintervalo [izquierda, derecha].
+
+    criterio admite dos valores: 'izquierda' (devuelve el límite izquierdo)
+    o 'derecha' (devuelve el límite derecho). No evalúa ninguna función.
+    Lanza ValueError si el criterio es desconocido o si
+    izquierda >= derecha.
+    """
+    validar_particion((izquierda, derecha))
+    if criterio == "izquierda":
+        return izquierda
+    if criterio == "derecha":
+        return derecha
+    raise ValueError(
+        f"Criterio desconocido: {criterio!r}. Use 'izquierda' o 'derecha'."
+    )

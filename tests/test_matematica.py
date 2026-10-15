@@ -10,6 +10,7 @@ from src.matematica import (
     PARTICION_EJEMPLO,
     crear_particion_uniforme,
     funcion_ejemplo,
+    seleccionar_muestra,
     validar_particion,
 )
 
@@ -104,6 +105,23 @@ class TestCrearParticionUniforme(unittest.TestCase):
             with self.subTest(a=a, b=b):
                 with self.assertRaises(ValueError):
                     crear_particion_uniforme(a, b, 4)
+
+class TestSeleccionarMuestra(unittest.TestCase):
+    def test_izquierda_y_derecha(self):
+        self.assertEqual(seleccionar_muestra(1, 1.5, "izquierda"), 1)
+        self.assertEqual(seleccionar_muestra(1, 1.5, "derecha"), 1.5)
+
+    def test_rechaza_criterio_desconocido(self):
+        for c in ("centro", "", "Izquierda", None, 1):
+            with self.subTest(criterio=c):
+                with self.assertRaises(ValueError):
+                    seleccionar_muestra(1, 1.5, c)
+
+    def test_rechaza_intervalo_invalido(self):
+        for a, b in ((1.5, 1), (1, 1)):
+            with self.subTest(a=a, b=b):
+                with self.assertRaises(ValueError):
+                    seleccionar_muestra(a, b, "izquierda")
 
 if __name__ == "__main__":
     unittest.main()

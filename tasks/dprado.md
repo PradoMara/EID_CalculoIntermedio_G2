@@ -36,14 +36,14 @@
   - [x] Servir también para n=8 y n=16; no redondear puntos de forma que altere la partición.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [ ] T-025 — Crear la función `seleccionar_muestra(izquierda, derecha, criterio)`
+## [x] T-025 — Crear la función `seleccionar_muestra(izquierda, derecha, criterio)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Devolver el límite izquierdo o derecho según criterio 'izquierda' o 'derecha'; no evaluar la función ni dibujar. Entregar: src/matematica.py. Requiere: T-001 en dprado.md.
 - Criterios de aceptación:
-  - [ ] En [1,1.5], devolver 1 o 1.5 respectivamente.
-  - [ ] Rechazar criterio desconocido e intervalo con izquierda>=derecha.
-  - [ ] Documentar los dos valores admitidos para criterio.
-  - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
+  - [x] En [1,1.5], devolver 1 o 1.5 respectivamente.
+  - [x] Rechazar criterio desconocido e intervalo con izquierda>=derecha.
+  - [x] Documentar los dos valores admitidos para criterio.
+  - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [ ] T-026 — Crear la función `calcular_rectangulos(funcion, particion, criterio)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
