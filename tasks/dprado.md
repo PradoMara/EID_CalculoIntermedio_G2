@@ -64,16 +64,16 @@
   - [x] No duplicar selección de muestras ni construcción de registros; propagar errores claros.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [ ] T-003 — Escribir pruebas unitarias del modelo matemático
+## [x] T-003 — Escribir pruebas unitarias del modelo matemático
 - Avance T-022: `tests/test_matematica.py` incluye los cinco valores acordados, un punto interior adicional, entradas Decimal/Fraction y los datos compartidos del ejemplo. Las pruebas de las funciones restantes siguen pendientes.
 - Prioridad: alta: evita propagar errores a las escenas
 - Detalles: Crear tests/test_matematica.py con casos separados para funcion_ejemplo, validar_particion, crear_particion_uniforme, seleccionar_muestra, calcular_rectangulos y suma_riemann. Ejecutarlos y corregir errores para asegurar funcionamiento correcto. Entregar: Pruebas y evidencia en informes/dprado.md. Requiere: T-022 a T-026 y T-002 en dprado.md: funciones matemáticas y suma.
 - Criterios de aceptación:
-  - [ ] Validar aportes y totales del ejemplo acordado, no solo comparar dos funciones del mismo módulo.
-  - [ ] Comprobar función constante, creciente y decreciente.
-  - [ ] Comprobar una partición no uniforme: anchos por intervalo, sin aplicar fórmula telescópica uniforme.
-  - [ ] Validar rechazos de entradas inválidas y ausencia de mutación.
-  - [ ] Registrar comando, casos, resultados reales y commit verificado.
+  - [x] Validar aportes y totales del ejemplo acordado, no solo comparar dos funciones del mismo módulo.
+  - [x] Comprobar función constante, creciente y decreciente.
+  - [x] Comprobar una partición no uniforme: anchos por intervalo, sin aplicar fórmula telescópica uniforme.
+  - [x] Validar rechazos de entradas inválidas y ausencia de mutación.
+  - [x] Registrar comando, casos, resultados reales y commit verificado.
 
 ## [ ] T-004 — Verificar inscripción, ética y coordinación
 - Prioridad: alta: plazos administrativos ya transcurridos
