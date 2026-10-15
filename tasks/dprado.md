@@ -27,14 +27,14 @@
   - [x] No modificar la secuencia recibida.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [ ] T-024 — Crear la función `crear_particion_uniforme(a, b, n)`
+## [x] T-024 — Crear la función `crear_particion_uniforme(a, b, n)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Calcular n+1 límites entre a y b con ancho (b-a)/n; validar a<b, límites finitos y n entero positivo. Entregar: src/matematica.py. Requiere: T-023 en dprado.md.
 - Criterios de aceptación:
-  - [ ] Para (0,2,4), devolver [0,0.5,1,1.5,2], incluyendo ambos extremos.
-  - [ ] Rechazar n=0, n negativo/no entero y límites inválidos.
-  - [ ] Servir también para n=8 y n=16; no redondear puntos de forma que altere la partición.
-  - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
+  - [x] Para (0,2,4), devolver [0,0.5,1,1.5,2], incluyendo ambos extremos.
+  - [x] Rechazar n=0, n negativo/no entero y límites inválidos.
+  - [x] Servir también para n=8 y n=16; no redondear puntos de forma que altere la partición.
+  - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [ ] T-025 — Crear la función `seleccionar_muestra(izquierda, derecha, criterio)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.

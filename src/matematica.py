@@ -11,7 +11,7 @@ def funcion_ejemplo(x):
 import math
 from collections.abc import Iterable, Mapping, Set
 from decimal import Decimal
-from numbers import Real
+from numbers import Integral, Real
 
 
 def validar_particion(particion):
@@ -37,3 +37,18 @@ def validar_particion(particion):
         if not anterior < actual:
             raise ValueError("Los puntos deben ser estrictamente crecientes.")
     return puntos
+
+def crear_particion_uniforme(a, b, n):
+    """Devuelve una tupla con los n+1 puntos equiespaciados entre a y b.
+
+    Incluye ambos extremos (ancho (b-a)/n) y no redondea los puntos.
+    Lanza ValueError si a<b no se cumple, los límites no son números
+    finitos o n no es un entero positivo.
+    """
+    validar_particion((a, b))
+    if isinstance(n, bool) or not isinstance(n, Integral) or n < 1:
+        raise ValueError("n debe ser un entero positivo.")
+    n = int(n)
+    puntos = [a + (b - a) * i / n for i in range(n)]
+    puntos.append(b)
+    return validar_particion(puntos)

@@ -8,6 +8,7 @@ from src.matematica import (
     INTERVALO_EJEMPLO,
     N_SUBINTERVALOS_EJEMPLO,
     PARTICION_EJEMPLO,
+    crear_particion_uniforme,
     funcion_ejemplo,
     validar_particion,
 )
@@ -63,6 +64,46 @@ class TestValidarParticion(unittest.TestCase):
         copia = list(p)
         validar_particion(p)
         self.assertEqual(p, copia)
+
+class TestCrearParticionUniforme(unittest.TestCase):
+    def test_ejemplo_principal(self):
+        self.assertEqual(crear_particion_uniforme(0, 2, 4), PARTICION_EJEMPLO)
+
+    def test_n_8_y_16(self):
+        for n in (8, 16):
+            with self.subTest(n=n):
+                p = crear_particion_uniforme(0, 2, n)
+                self.assertEqual(len(p), n + 1)
+                self.assertEqual((p[0], p[-1]), (0, 2))
+                for i, x in enumerate(p):
+                    self.assertEqual(x, 2 * i / n)  # exacto en binario
+
+    def test_extremos_exactos_sin_redondeo(self):
+        p = crear_particion_uniforme(0, 1, 3)
+        self.assertEqual((p[0], p[-1]), (0, 1))
+        self.assertEqual(p[1], 1 / 3)
+        p = crear_particion_uniforme(Fraction(0), Fraction(1), 3)
+        self.assertEqual(p[1], Fraction(1, 3))
+        self.assertEqual(crear_particion_uniforme(-1, 1, 2), (-1, 0, 1))
+
+    def test_resultado_es_particion_valida(self):
+        p = crear_particion_uniforme(0.1, 0.7, 7)
+        self.assertEqual(validar_particion(p), p)
+
+    def test_rechaza_n_invalido(self):
+        for n in (0, -1, -4, 2.5, 4.0, "4", None, True):
+            with self.subTest(n=n):
+                with self.assertRaises(ValueError):
+                    crear_particion_uniforme(0, 2, n)
+
+    def test_rechaza_limites_invalidos(self):
+        for a, b in (
+            (2, 0), (1, 1), (float("nan"), 1), (0, float("inf")),
+            (float("-inf"), 0), ("0", 1), (0, None),
+        ):
+            with self.subTest(a=a, b=b):
+                with self.assertRaises(ValueError):
+                    crear_particion_uniforme(a, b, 4)
 
 if __name__ == "__main__":
     unittest.main()
