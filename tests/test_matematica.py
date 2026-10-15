@@ -5,6 +5,7 @@ from fractions import Fraction
 import unittest
 
 from src.matematica import (
+    calcular_rectangulos,
     INTERVALO_EJEMPLO,
     N_SUBINTERVALOS_EJEMPLO,
     PARTICION_EJEMPLO,
@@ -122,6 +123,36 @@ class TestSeleccionarMuestra(unittest.TestCase):
             with self.subTest(a=a, b=b):
                 with self.assertRaises(ValueError):
                     seleccionar_muestra(a, b, "izquierda")
+
+class TestCalcularRectangulos(unittest.TestCase):
+    def test_izquierda(self):
+        r = calcular_rectangulos(funcion_ejemplo, PARTICION_EJEMPLO, "izquierda")
+        self.assertEqual(len(r), 4)
+        self.assertEqual([x["altura"] for x in r], [1, 1.25, 2, 3.25])
+        self.assertEqual([x["aporte"] for x in r], [0.5, 0.625, 1, 1.625])
+
+    def test_derecha(self):
+        r = calcular_rectangulos(funcion_ejemplo, PARTICION_EJEMPLO, "derecha")
+        self.assertEqual([x["altura"] for x in r], [1.25, 2, 3.25, 5])
+        self.assertEqual([x["aporte"] for x in r], [0.625, 1, 1.625, 2.5])
+
+    def test_formato_y_orden(self):
+        r = calcular_rectangulos(funcion_ejemplo, (0, 1, 3), "derecha")
+        self.assertEqual(r[0], {"izquierda": 0, "derecha": 1, "muestra": 1,
+                                "ancho": 1, "altura": 2, "aporte": 2})
+        self.assertEqual(r[1]["ancho"], 2)  # ancho propio, no uniforme
+        self.assertEqual(r[1]["aporte"], 20)
+
+    def test_no_modifica_particion(self):
+        p = [0, 0.5, 1]
+        calcular_rectangulos(funcion_ejemplo, p, "izquierda")
+        self.assertEqual(p, [0, 0.5, 1])
+
+    def test_rechaza_entradas_invalidas(self):
+        with self.assertRaises(ValueError):
+            calcular_rectangulos(funcion_ejemplo, PARTICION_EJEMPLO, "centro")
+        with self.assertRaises(ValueError):
+            calcular_rectangulos(funcion_ejemplo, (1, 1), "izquierda")
 
 if __name__ == "__main__":
     unittest.main()

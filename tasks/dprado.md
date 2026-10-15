@@ -45,15 +45,15 @@
   - [x] Documentar los dos valores admitidos para criterio.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [ ] T-026 — Crear la función `calcular_rectangulos(funcion, particion, criterio)`
+## [x] T-026 — Crear la función `calcular_rectangulos(funcion, particion, criterio)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Validar partición/criterio y devolver una lista de registros con izquierda, derecha, muestra, ancho, altura y aporte. Usar seleccionar_muestra; altura=funcion(muestra), aporte=altura*ancho. Entregar: src/matematica.py. Requiere: T-023 y T-025 en dprado.md; T-022 para el ejemplo.
 - Criterios de aceptación:
-  - [ ] Un registro por subintervalo, respetando el orden y anchos propios.
-  - [ ] Izquierda: alturas [1,1.25,2,3.25], aportes [0.5,0.625,1,1.625].
-  - [ ] Derecha: alturas [1.25,2,3.25,5], aportes [0.625,1,1.625,2.5].
-  - [ ] No modificar la partición ni depender del render; documentar el formato compartido.
-  - [ ] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
+  - [x] Un registro por subintervalo, respetando el orden y anchos propios.
+  - [x] Izquierda: alturas [1,1.25,2,3.25], aportes [0.5,0.625,1,1.625].
+  - [x] Derecha: alturas [1.25,2,3.25,5], aportes [0.625,1,1.625,2.5].
+  - [x] No modificar la partición ni depender del render; documentar el formato compartido.
+  - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [ ] T-002 — Crear la función `suma_riemann(funcion, particion, criterio)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.

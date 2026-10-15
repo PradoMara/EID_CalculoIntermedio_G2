@@ -72,3 +72,34 @@ def seleccionar_muestra(izquierda, derecha, criterio):
     raise ValueError(
         f"Criterio desconocido: {criterio!r}. Use 'izquierda' o 'derecha'."
     )
+
+def calcular_rectangulos(funcion, particion, criterio):
+    """Calcula los rectángulos de una suma de Riemann.
+
+    Devuelve una lista con un diccionario por subintervalo, en orden, con
+    las claves: 'izquierda', 'derecha', 'muestra', 'ancho', 'altura' y
+    'aporte'. Se cumple ancho = derecha - izquierda,
+    altura = funcion(muestra) y aporte = altura * ancho.
+    criterio es 'izquierda' o 'derecha' (ver seleccionar_muestra).
+    No modifica la partición. Lanza ValueError si la partición o el
+    criterio no son válidos.
+    """
+    puntos = validar_particion(particion)
+    if criterio not in CRITERIOS_MUESTRA:
+        raise ValueError(
+            f"Criterio desconocido: {criterio!r}. Use 'izquierda' o 'derecha'."
+        )
+    registros = []
+    for izq, der in zip(puntos, puntos[1:]):
+        muestra = seleccionar_muestra(izq, der, criterio)
+        ancho = der - izq
+        altura = funcion(muestra)
+        registros.append({
+            "izquierda": izq,
+            "derecha": der,
+            "muestra": muestra,
+            "ancho": ancho,
+            "altura": altura,
+            "aporte": altura * ancho,
+        })
+    return registros
