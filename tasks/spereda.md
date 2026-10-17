@@ -1,5 +1,7 @@
 # Tareas de Sebastian Pereda
 
+Revisión del 17-10-2026: evidencia en [informes/spereda.md](../informes/spereda.md). Las tareas con integración o montaje pendiente permanecen abiertas aunque la parte propia esté implementada y probada de forma aislada. No se certifica aquí la grabación ni la revisión humana de fuentes.
+
 ## [x] T-005 — Investigar fundamentos y verificar el ejemplo elegido
 - Prioridad: alta: fija los datos antes de programar
 - Detalles: Leer apunte y una fuente matemática complementaria identificable. Desarrollar cálculos manuales para el ejemplo confirmado: f(x)=x²+1, [0,2], n=4, Δx=0.5 y P={0,0.5,1,1.5,2}. La elección ya está aprobada por Daniel; documentar y comprobar los resultados, sin volver a solicitar su selección. Entregar: investigacion/fundamentos_sebastian.md y guion/calculos.md.
@@ -20,7 +22,7 @@
   - [x] Documentar etiquetas, colores accesibles y cómo se revisará el render.
   - [x] Código adaptado con procedencia; no afirmar que una API se probó antes de ejecutarla.
 
-## [x] T-006 — Integrar guion, fuentes y reparto de voces
+## [ ] T-006 — Integrar guion, fuentes y reparto de voces
 - Prioridad: alta: alinea matemáticas, escenas y audio
 - Detalles: Integrar investigaciones de ambos, apunte y Manim; organizar secciones propuestas en docs/context/analisis.md. Daniel explica conceptos, Sebastian construcciones/cálculos, Rodrigo causa/interpretación/integral, ajustando equilibrio de voz. Entregar: guion/guion.md y referencias.md. Requiere: T-005 en spereda.md: ejemplo y fundamentos validados; T-007 en rpedraza.md: investigación de interpretación; T-010 en spereda.md: investigación Manim.
 - Criterios de aceptación:
@@ -29,9 +31,9 @@
   - [x] Cada persona tiene explicación matemática sustantiva.
   - [x] Referencias incluyen apunte + dos fuentes matemáticas complementarias distintas + Manim, con datos completos.
   - [x] Ejemplo central con partición fija; refinamiento delimitado como otra etapa; créditos legibles y compatibles con tiempo.
-  - [x] Coordinar nombres concretos de escenas con T-011/T-015; actualizar guion tras revisión.
+  - [ ] Coordinar nombres concretos de escenas con T-011/T-015; actualizar guion tras revisión. Nombres concretos y bloques propios actualizados; revisión conjunta final pendiente.
 
-## [x] T-027 — Crear la función `preparar_datos_rectangulos(funcion, particion, criterio)`
+## [ ] T-027 — Crear la función `preparar_datos_rectangulos(funcion, particion, criterio)`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Consumir calcular_rectangulos y preparar los datos geométricos para Manim: base de izquierda a derecha y altura desde y=0. Mantener datos puros para pruebas sin render. Entregar: src/datos_rectangulos.py. Requiere: T-026 en dprado.md.
 - Criterios de aceptación:
@@ -85,22 +87,22 @@
   - [x] No desplazar la base del rectángulo ni tapar etiquetas.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [x] T-011 — Crear la escena `ConstruccionIzquierda.construct()`
+## [ ] T-011 — Crear la escena `ConstruccionIzquierda.construct()`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Reutilizar helpers para mostrar gráfica, partición, cuatro muestras izquierdas y aparición progresiva de rectángulos; mostrar aportes y suma 3.75. Entregar: src/escenas/construcciones.py. Requiere: T-027 a T-032 en spereda.md; T-002 en dprado.md; T-006 en spereda.md.
 - Criterios de aceptación:
   - [x] Criterio 'izquierda', misma función/partición del README.
   - [x] Narración puede seguir muestra ->altura ->aporte ->suma.
-  - [x] Totales calculados con el modelo; escena renderiza correctamente y sin recortes.
+  - [ ] Totales calculados con el modelo; escena renderiza correctamente y sin recortes. Parte visual revisada con doble de prueba; integración pendiente de T-026.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
-## [x] T-033 — Crear la escena `ConstruccionDerecha.construct()`
+## [ ] T-033 — Crear la escena `ConstruccionDerecha.construct()`
 - Prioridad: alta: necesaria para construir y comprobar el ejemplo.
 - Detalles: Reutilizar los mismos helpers y escala para construir rectángulos con muestras derechas; mostrar aportes y suma 5.75. Entregar: src/escenas/construcciones.py. Requiere: T-027 a T-032 en spereda.md; T-002 en dprado.md; T-006 en spereda.md.
 - Criterios de aceptación:
   - [x] Criterio 'derecha'; conservar partición y bases utilizadas por la construcción izquierda.
-  - [x] Muestras derechas y alturas correctas; total del modelo, no texto independiente.
-  - [x] Render coherente con guion y comparación visual.
+  - [ ] Muestras derechas y alturas correctas; total del modelo, no texto independiente. Total derivado de aportes; falta ejecución con el modelo real de T-026.
+  - [x] Render aislado coherente con las fases del guion; queda pendiente sincronización con voz real y montaje.
   - [x] Asegurarse de que funcione correctamente y agregar los casos unitarios correspondientes a la tarea de pruebas del responsable.
 
 ## [x] T-012 — Escribir pruebas unitarias de construcción visual

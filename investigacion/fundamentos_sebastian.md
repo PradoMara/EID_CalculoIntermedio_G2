@@ -36,7 +36,7 @@ $$S(P) = \sum_{i=1}^{n} f(x_i^*) \, \Delta x_i$$
 
 ### Principio clave
 > **La partición $P$ solo fija las bases $\Delta x_i$.**  
-> La altura la fija otra decisión: dónde se evalúa $f$ dentro de cada subintervalo. Dos sumas pueden compartir exactamente las mismas bases y evaluar $f$ en puntos distintos. Si $f$ no es constante en el subintervalo, $f(x_{i-1}) \neq f(x_i)$, y por tanto los aportes y las sumas difieren. Lo único que se conserva es la base.
+> La altura la fija otra decisión: dónde se evalúa $f$ dentro de cada subintervalo. Dos sumas pueden compartir exactamente las mismas bases y evaluar $f$ en puntos distintos. Si los valores evaluados en ambos extremos son distintos, los aportes de ese tramo difieren. Una función no constante puede tener extremos iguales: por ejemplo, $f(x)=(x-1)^2$ en $[0,2]$. Además, diferencias locales pueden cancelarse al sumar. En nuestro ejemplo, la función es estrictamente creciente y todos los aportes derechos son mayores. Las bases se conservan.
 
 ---
 

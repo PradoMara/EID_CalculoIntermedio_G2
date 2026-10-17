@@ -88,3 +88,17 @@
 | Comparación causal $[1, 1{,}5]$ | 60 s | Rodrigo Pedraza | 2:55 – 3:55 |
 | Refinamiento, integral y créditos | 50 s | Rodrigo Pedraza | 3:55 – 4:45 |
 | **Total video** | **285 s** | **Equilibrio 3 voces** | **4 min 45 s** |
+
+
+## Ajuste técnico de las construcciones y créditos — 17 de octubre de 2026
+
+Cada construcción dura 55 segundos sin audio: 0–7 s presentación de ejes y criterio; 7–17, 17–27, 27–37 y 37–47 s, un subintervalo por bloque. En cada bloque aparecen muestra (3 s), altura (3 s) y rectángulo con aporte (4 s). De 47–55 s aparece y permanece el total calculado a partir de los aportes. El panel derecho conserva los cuatro cálculos para leerlos juntos. Las pausas deben sincronizarse con la grabación de Sebastián; todavía no hay toma de voz validada.
+
+Los archivos de revisión aislada utilizan datos de prueba explícitos. Las escenas de producción consumen el modelo real y su ejecución integrada queda pendiente de la dependencia matemática de Daniel.
+
+Créditos dentro del bloque final, sin ampliar los 285 segundos previstos:
+- 3:55–4:30: explicación del refinamiento y conclusión (35 s).
+- 4:30–4:38: tarjeta 1 (8 s): «Grupo 2 · Cálculo Intermedio / Daniel Prado · Sebastian Pereda · Rodrigo Pedraza / Animación: Manim Community 0.22.0».
+- 4:38–4:45: tarjeta 2 (7 s): «Fuentes: Introducción a la integral (apunte del curso) / Stewart, Cálculo, 8.ª ed., §§5.1–5.2 / MIT OCW, 18.013A, cap. 20 / Referencias completas y uso de IA: repositorio del proyecto».
+
+Las tarjetas usarán texto blanco sobre negro, al menos 28 puntos en Manim y margen de 0.5 unidades; deben verificarse en el montaje final. Esta es una especificación editorial para el responsable del montaje, no una afirmación de que los créditos ya estén renderizados. La locución del cierre debe ensayarse para comprobar que cabe en los 35 segundos disponibles.
