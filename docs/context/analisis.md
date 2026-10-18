@@ -9,7 +9,7 @@ Este documento reúne los requisitos encontrados en el repositorio y propone có
 | Archivo | Qué aporta |
 | --- | --- |
 | [Pauta del EID](docs/Evaluacion%20Integrada%20De%20Desempe%C3%B1o.pdf) | Organización, video, repositorio, fuentes, ética, defensa y entrega. Cuatro páginas. |
-| [Rúbrica](docs/rubrica.pdf) | Ocho criterios del video y seis de la defensa. Cuatro páginas. |
+| [Rúbrica](docs/EID_calculo_intermedio%20(4).pdf) | Ocho criterios del video (40 pts) y cuatro de la defensa (70 pts, porcentaje de conservación). Dos páginas. |
 | [Temas](docs/temas.pdf) | Tema del grupo 2, pregunta central y alcance específico, página 2. |
 | [Apunte](docs/Apunte.pdf) | Base conceptual: partición, punto muestra, suma de Riemann e integral. Siete páginas. |
 | [Código de ética del grupo](docs/MAT1188_ETICA_G02_2026.pdf) | Integrantes, coordinación, compromisos y calendario interno. Tres páginas. |
@@ -287,35 +287,33 @@ Para cada fuente, registrar qué afirmación respalda: elección de muestras, f�
 
 Como este documento se preparó con ayuda de IA, debe registrarse ese uso si se incorpora al proyecto: herramienta Codex, finalidad de analizar requisitos y proponer organización y ejemplo, y partes apoyadas. Después se deben documentar las verificaciones humanas realmente realizadas: contraste con PDF, revisión de fórmulas, comprobación de valores, inspección de escenas y comprensión por los tres integrantes. No declarar revisiones como realizadas si todavía están pendientes. Ampliar la declaración si se usa IA para programación, guion u otras partes. No se requieren conversaciones completas.
 
-## 10. Cómo cumplir la rúbrica
+## 10. Cómo cumplir la rúbrica (`docs/EID_calculo_intermedio (4).pdf`)
 
-El video tiene ocho criterios de 5 puntos, total 40. La defensa tiene seis criterios de 10 puntos, total 60. Los indicadores se califican en incrementos de 0.5. La pauta establece \(N_{base}=0.40N_{video}+0.60N_{defensa}\); no se debe inventar una conversión de puntajes a notas que no esté comunicada por la docente.
+El video se evalúa sobre un máximo de **40 puntos** ($P_V$), obteniendo así una nota inicial ($N_V$). Durante la defensa oral (máximo **70 puntos**, $P_D$), el estudiante seleccionado al azar no repite una presentación del video, sino que responde las **cuatro preguntas** formuladas por la comisión (M1, M2, M3 y C1). El porcentaje de nota conservado es $C = (P_D + 30)\%$ (entre el $30\%$ y el $100\%$ de $N_V$), de modo que $N_f = N_V \times \frac{P_D + 30}{100}$. La defensa permite aclarar o corregir oralmente un error, pero **no modifica el puntaje ya asignado al video**.
 
-| Video | Evidencia que debemos preparar |
-| --- | --- |
-| V1. Fundamentos | Definiciones correctas, significado de símbolos, continuidad, no negatividad y crecimiento del ejemplo. |
-| V2. Ejemplo y procedimiento | Función, intervalo y partición propios; aportes correctos y guion con cálculos. |
-| V3. Interpretación | Explicar los totales, su causa, la pregunta central y la conexión justificada con la integral. |
-| V4. Manim | Objetos, ejes, escalas, etiquetas y parámetros correctos; cambios que ayudan a comprender. |
-| V5. Integración | Narración sincronizada, explicación progresiva y lenguaje adecuado. |
-| V6. Comunicación y participación | 4–6 minutos, tres voces identificadas con explicación sustantiva, audio y texto legibles. |
-| V7. Fuentes e IA | Apunte, dos fuentes adicionales, documentación Manim, créditos y verificación de apoyos. |
-| V8. Entrega y documentación | Archivos correctos, acceso al repositorio, correspondencia con el video, README y ficha con SHA y enlaces. |
+| Video (40 pts) | Puntaje | Evidencia e indicadores observables que debemos asegurar |
+| --- | :---: | --- |
+| **V1. Fundamentos matemáticos** | **7 pts** | a) define el concepto central (1 pt); b) explica los símbolos $\sum, f(x_i^*), \Delta x_i$ (1 pt); c) indica condiciones de aplicación: continuidad, $f(x)\ge 0$, monotonía (1 pt); d) relaciona los conceptos (2 pts); e) presenta afirmaciones matemáticas correctas (2 pts). |
+| **V2. Ejemplo y procedimiento** | **7 pts** | a) usa un ejemplo distinto al apunte (1 pt); b) define función, intervalo y datos (1 pt); c) desarrolla los pasos principales (2 pts); d) obtiene resultados correctos: $L_4=3.75, R_4=5.75$ (2 pts); e) explica los cálculos en el video (1 pt). |
+| **V3. Interpretación y pregunta central** | **6 pts** | a) interpreta el resultado (1 pt); b) relaciona el ejemplo y la teoría (1 pt); c) responde la pregunta central (1 pt); d) justifica su respuesta en $[1, 1.5]$ y diferencia total $2$ (2 pts); e) conecta su conclusión con la integral $14/3$ al refinar (1 pt). |
+| **V4. Visualización matemática con Manim** | **5 pts** | a) utiliza escenas pertinentes de Manim; b) representa bien funciones y objetos; c) usa ejes y etiquetas coherentes; d) anima cambios que facilitan la comprensión; e) coordina parámetros, cálculos y visualización. |
+| **V5. Integración de explicación y animación** | **5 pts** | a) sincroniza narración y escenas; b) explica lo representado; c) ordena la exposición progresivamente; d) usa lenguaje comprensible; e) articula presentación, desarrollo y cierre. |
+| **V6. Comunicación y participación en el video** | **5 pts** | a) cumple la duración total de 4 a 6 minutos; b) todos los integrantes explican matemáticas con su voz; c) identifica cada intervención por nombre; d) tiene audio comprensible; e) tiene expresiones y gráficos legibles. |
+| **V7. Fuentes, recursos externos e IA** | **3 pts** | a) cita el apunte y dos fuentes matemáticas adicionales (1 pt); b) identifica Manim y recursos adaptados, con créditos localizables (1 pt); c) declara el uso o no uso de IA y su verificación (1 pt). |
+| **V8. Entrega y documentación** | **2 pts** | a) entrega MP4 y ficha PDF identificados y accesibles (1 pt); b) facilita el repositorio con código del video, versión final y README (1 pt). |
 
-| Defensa | Qué debe poder hacer cualquiera de los tres |
-| --- | --- |
-| D1. Dominio conceptual | Explicar partición, muestra, altura, suma e integral con sus palabras y condiciones. |
-| D2. Ejemplo y cálculos | Reconstruir un aporte, ambas sumas y su interpretación. |
-| D3. Escenas | Interpretar objetos, ejes y cambios; distinguir ilustración y justificación matemática. |
-| D4. Código y parámetros | Localizar escenas, explicar fragmentos y relacionar parámetros con la construcción. |
-| D5. Variación | Anticipar y justificar un cambio sencillo e identificar qué se modificaría en el código. |
-| D6. Justificación y revisión | Defender el ejemplo, explicar verificación y limitaciones y describir aportes propios y apoyos. |
+| Defensa oral (70 pts) | Puntaje | Qué debe poder responder cualquiera de los tres |
+| --- | :---: | --- |
+| **M1. Comprensión del contenido matemático** | **20 pts** | Explica un concepto, relación o afirmación que utilizó en su video y lo vincula con el tema asignado. |
+| **M2. Justificación del desarrollo** | **20 pts** | Explica por qué realizó un paso o eligió un procedimiento, y qué significado tiene en su ejemplo. |
+| **M3. Interpretación matemática** | **10 pts** | Interpreta un resultado, gráfica o animación y lo relaciona con la explicación del proyecto. |
+| **C1. Comprensión del código utilizado** | **20 pts** | Explica qué representa o modifica un fragmento o parámetro relevante del código y cómo afecta a la visualización (sin exigir memorizar sintaxis de Manim). |
 
 Los documentos respaldan el video, pero no sustituyen explicaciones ausentes en él. La ética y el repositorio son requisitos; no constituyen una tercera ponderación. La cantidad de commits o la sofisticación audiovisual no dan bonificaciones por sí solas.
 
 ## 11. Preparación de la defensa
 
-La defensa es obligatoria, dura **10 minutos por grupo** y se selecciona al azar a un integrante presente para presentar y responder. Todos declaran conocer el proyecto completo. No se cambia de representante por dificultades al responder. Solo habla el seleccionado o quien reciba expresamente la palabra del evaluador para la pregunta indicada.
+La defensa es obligatoria, dura **máximo 10 minutos por grupo** y se selecciona al azar a un integrante presente para responder las **cuatro preguntas** formuladas por el equipo evaluador (M1, M2, M3 y C1; no se debe repetir una presentación del video). Todos declaran conocer el proyecto completo. No se cambia de representante por dificultades al responder. Solo habla el seleccionado o quien reciba expresamente la palabra del evaluador para la pregunta indicada.
 
 Cada integrante debe practicar estas preguntas sin ayuda:
 

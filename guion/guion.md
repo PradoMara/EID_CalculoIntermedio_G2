@@ -21,87 +21,88 @@
 ## Estructura de Escenas y Locución
 
 ### Bloque 1: Presentación y Fundamentos Teóricos (0:00 – 1:05)
-* **Narrador:** Daniel Prado  
-* **Visual / Escena Manim:** Título de la presentación, pregunta central legible, definición formal de partición $P=\{x_0, \dots, x_n\}$, subintervalos $[x_{i-1}, x_i]$ y ancho $\Delta x_i$.  
+* **Narrador:** Daniel Prado *(rótulo visible en pantalla: «Narrador: Daniel Prado»)*  
+* **Visual / Escena Manim:** Título de la presentación, integrantes, pregunta central legible, definición formal de partición $P=\{x_0, \dots, x_n\}$, subintervalos $[x_{i-1}, x_i]$, ancho $\Delta x_i = x_i - x_{i-1}$, condición $f(x) \ge 0$ continua en $[a, b]$ y fórmula general de la suma de Riemann $\sum_{i=1}^n f(x_i^*)\,\Delta x_i$ destacando sus símbolos.  
 * **Audio / Locución:**  
-  > *"Hola, somos el Grupo 2 de Cálculo Intermedio. En este video abordaremos una pregunta fundamental: ¿Por qué dos sumas de Riemann construidas sobre exactamente la misma partición pueden entregar valores distintos?  
-  > Para responderlo, consideremos una función continua $f$ en un intervalo cerrado $[a, b]$. Una partición $P$ subdivide este intervalo en $n$ subintervalos de la forma $[x_{i-1}, x_i]$, donde cada uno tiene una base o ancho $\Delta x_i = x_i - x_{i-1}$.  
-  > La clave está en que la partición define de manera fija las bases sobre el eje horizontal, pero no fija por sí sola las alturas. La altura depende de qué punto muestra $x_i^*$ elijamos dentro de cada subintervalo para evaluar la función: si elegimos el extremo izquierdo $x_{i-1}$, obtenemos la suma izquierda; si elegimos el extremo derecho $x_i$, obtenemos la suma derecha."*
+  > *"Hola, soy Daniel Prado y junto a Sebastian Pereda y Rodrigo Pedraza somos el Grupo 2 de Cálculo Intermedio. En este video responderemos nuestra pregunta central: ¿Por qué dos sumas de Riemann construidas sobre exactamente la misma partición pueden entregar valores distintos?  
+  > Para entenderlo, consideremos una función continua y no negativa, $f(x) \ge 0$, en un intervalo cerrado $[a, b]$. Una partición $P = \{x_0, x_1, \dots, x_n\}$ divide el intervalo en $n$ subintervalos $[x_{i-1}, x_i]$, cada uno con base o ancho $\Delta x_i = x_i - x_{i-1}$.  
+  > En la suma de Riemann, $\sum_{i=1}^n f(x_i^*)\,\Delta x_i$, el símbolo $\Sigma$ suma el área de $n$ rectángulos, donde la base es $\Delta x_i$ y la altura es la función evaluada en un punto muestra $x_i^*$. La clave es que la partición fija las bases sobre el eje horizontal, pero no fija por sí sola las alturas: elegir el extremo izquierdo $x_{i-1}$ da la suma izquierda $L_n$, y elegir el extremo derecho $x_i$ da la suma derecha $R_n$."*
 
 ---
 
 ### Bloque 2: Construcción de la Suma Izquierda ($L_4$) (1:05 – 2:00)
-* **Narrador:** Sebastian Pereda  
-* **Visual / Escena Manim (`ConstruccionIzquierda`):** Ejes coordenados fijos ($x \in [0, 2]$, $y \in [0, 5]$), gráfica de $f(x)=x^2+1$ en blanco, marcas de partición en $\{0; 0{,}5; 1; 1{,}5; 2\}$. Aparición progresiva de los 4 rectángulos en azul cielo (`#56B4E9`) con sus muestras en los extremos izquierdos, alturas punteadas y aportes numéricos.  
+* **Narrador:** Sebastian Pereda *(rótulo visible en pantalla: «Narrador: Sebastian Pereda»)*  
+* **Visual / Escena Manim (`ConstruccionIzquierda`):** Ejes coordenados fijos ($x \in [0, 2]$, $y \in [0, 5]$), gráfica de $f(x)=x^2+1$ en blanco, marcas de partición en $\{0; 0{,}5; 1; 1{,}5; 2\}$. Aparición progresiva de los 4 rectángulos en azul cielo (`#56B4E9`) con sus muestras en los extremos izquierdos, alturas punteadas y cálculo explícito de aportes (`0.5 × altura`).  
 * **Audio / Locución:**  
-  > *"Soy Sebastian Pereda. Analicemos nuestro ejemplo oficial con la función $f(x) = x^2 + 1$ en el intervalo $[0, 2]$, dividida en cuatro subintervalos iguales de ancho $\Delta x = 0{,}5$, con la partición $\{0; 0{,}5; 1; 1{,}5; 2\}$.  
-  > Construyamos primero la suma por extremos izquierdos. En cada subintervalo, evaluamos la función en su límite izquierdo:  
-  > En $[0, 0{,}5]$, evaluamos en 0: altura 1, aporte $0{,}5$.  
-  > En $[0{,}5, 1]$, evaluamos en $0{,}5$: altura $1{,}25$, aporte $0{,}625$.  
-  > En $[1, 1{,}5]$, evaluamos en 1: altura 2, aporte 1.  
-  > Y en $[1{,}5, 2]$, evaluamos en $1{,}5$: altura $3{,}25$, aporte $1{,}625$.  
-  > Sumando los cuatro rectángulos, obtenemos una suma izquierda $L_4$ de exactamente $3{,}75$."*
+  > *"Soy Sebastian Pereda. Desarrollaremos nuestro ejemplo propio con la función continua, positiva y creciente $f(x) = x^2 + 1$ en el intervalo $[0, 2]$, dividida en $n = 4$ subintervalos iguales de ancho $\Delta x = (2 - 0)/4 = 0{,}5$, con la partición $P = \{0; 0{,}5; 1; 1{,}5; 2\}$.  
+  > Construyamos primero la suma izquierda $L_4$, evaluando $f$ en el extremo izquierdo de cada base y multiplicando altura por ancho:  
+  > En $[0, 0{,}5]$, muestra $0$: altura $f(0) = 0^2 + 1 = 1$, y aporte $0{,}5 \times 1 = 0{,}5$.  
+  > En $[0{,}5, 1]$, muestra $0{,}5$: altura $f(0{,}5) = 1{,}25$, aporte $0{,}5 \times 1{,}25 = 0{,}625$.  
+  > En $[1, 1{,}5]$, muestra $1$: altura $f(1) = 2$, aporte $0{,}5 \times 2 = 1$.  
+  > Y en $[1{,}5, 2]$, muestra $1{,}5$: altura $f(1{,}5) = 3{,}25$, aporte $0{,}5 \times 3{,}25 = 1{,}625$.  
+  > Al sumar los cuatro aportes rectangulares, obtenemos la suma izquierda $L_4 = 3{,}75$."*
 
 ---
 
 ### Bloque 3: Construcción de la Suma Derecha ($R_4$) (2:00 – 2:55)
-* **Narrador:** Sebastian Pereda  
-* **Visual / Escena Manim (`ConstruccionDerecha`):** Los mismos ejes, escala y marcas. Los 4 rectángulos se construyen ahora con muestras en los extremos derechos, representados en color naranja (`#E69F00`), mostrando las nuevas alturas y aportes.  
+* **Narrador:** Sebastian Pereda *(rótulo visible en pantalla: «Narrador: Sebastian Pereda»)*  
+* **Visual / Escena Manim (`ConstruccionDerecha`):** Los mismos ejes, escala y marcas. Los 4 rectángulos se construyen ahora con muestras en los extremos derechos, representados en color naranja (`#E69F00`), mostrando las nuevas alturas y el cálculo de cada aporte.  
 * **Audio / Locución:**  
-  > *"Ahora, sobre exactamente la misma gráfica y conservando idénticas las cuatro bases de ancho $0{,}5$, construimos la suma por extremos derechos. Evaluamos la función en el extremo derecho de cada subintervalo:  
-  > En $[0, 0{,}5]$, la muestra es $0{,}5$: altura $1{,}25$, aporte $0{,}625$.  
-  > En $[0{,}5, 1]$, la muestra es 1: altura 2, aporte 1.  
-  > En $[1, 1{,}5]$, la muestra es $1{,}5$: altura $3{,}25$, aporte $1{,}625$.  
-  > En $[1{,}5, 2]$, la muestra es 2: altura 5, aporte $2{,}5$.  
-  > Al sumar estos aportes, la suma derecha $R_4$ resulta ser $5{,}75$. Las bases fueron idénticas, pero el resultado final aumentó en 2 unidades completas."*
+  > *"Ahora, sobre exactamente la misma función, intervalo y conservando idénticas las cuatro bases de ancho $0{,}5$, construimos la suma por extremos derechos $R_4$, evaluando en el límite derecho de cada subintervalo:  
+  > En $[0, 0{,}5]$, la muestra es $0{,}5$: altura $1{,}25$, y aporte $0{,}5 \times 1{,}25 = 0{,}625$.  
+  > En $[0{,}5, 1]$, la muestra es $1$: altura $2$, aporte $0{,}5 \times 2 = 1$.  
+  > En $[1, 1{,}5]$, la muestra es $1{,}5$: altura $3{,}25$, aporte $0{,}5 \times 3{,}25 = 1{,}625$.  
+  > Y en $[1{,}5, 2]$, la muestra es $2$: altura $f(2) = 2^2 + 1 = 5$, aporte $0{,}5 \times 5 = 2{,}5$.  
+  > Sumando estos cuatro aportes, la suma derecha es $R_4 = 5{,}75$. Aunque las bases fueron exactamente iguales, cambiar el punto muestra aumentó la suma en 2 unidades completas."*
 
 ---
 
 ### Bloque 4: Comparación Causal y Respuesta Central (2:55 – 3:55)
-* **Narrador:** Rodrigo Pedraza  
-* **Visual / Escena Manim (`DetalleIntervalo` y `ComparacionSumas`):** Primer plano en el subintervalo $[1, 1{,}5]$. Se resalta la base fija de $0{,}5$ y cómo la altura pasa de $2$ a $3{,}25$, elevando el aporte de $1{,}0$ a $1{,}625$. Luego comparación sucesiva sobre los mismos ejes, conservando la escala, con la diferencia $R_4 - L_4 = 2$.
+* **Narrador:** Rodrigo Pedraza *(rótulo visible en pantalla: «Narrador: Rodrigo Pedraza»)*  
+* **Visual / Escena Manim (`DetalleIntervalo` y `ComparacionSumas`):** Primer plano en el subintervalo $[1, 1{,}5]$. Se resalta la base fija de $0{,}5$ y cómo la altura pasa de $2$ a $3{,}25$, elevando el aporte de $1{,}0$ a $1{,}625$ (diferencia $+0{,}625$). Luego vista comparativa con la diferencia total $R_4 - L_4 = 2$.  
 * **Audio / Locución:**  
-  > *"Soy Rodrigo Pedraza. Para responder a nuestra pregunta central, miremos con lupa el tercer subintervalo, entre 1 y $1{,}5$.  
-  > Los cuatro intervalos y sus bases permanecen iguales. En cada uno movemos el punto muestra del extremo izquierdo al derecho. La base no se traslada en absoluto; sigue midiendo $0{,}5$. Pero como $f(x)=x^2+1$ es una función estrictamente creciente en este intervalo, evaluar en el extremo derecho produce una altura mayor: sube de 2 a $3{,}25$, y el aporte local pasa de 1 a $1{,}625$.  
-  > Al sumar las diferencias de todos los tramos, los términos intermedios se cancelan en una suma telescópica: la diferencia total es $\Delta x [f(2) - f(0)] = 0{,}5 \times (5 - 1) = 2$.  
-  > Por eso dos sumas sobre la misma partición pueden dar valores distintos: la partición fija las bases, pero la regla de selección fija las alturas evaluadas."*
+  > *"Soy Rodrigo Pedraza. Para justificar nuestra respuesta a la pregunta central, observemos en detalle el tercer subintervalo, $[1, 1{,}5]$.  
+  > Al pasar de extremos izquierdos a derechos, la base no se desplaza: permanece fija entre $1$ y $1{,}5$ con ancho $0{,}5$. Sin embargo, cambiar el punto muestra de $1$ a $1{,}5$ evalúa la función en otro punto: la altura sube de $2$ a $3{,}25$ y el aporte aumenta de $1$ a $1{,}625$, sumando $0{,}625$ extra.  
+  > En este ejemplo la suma derecha sobreestima y la izquierda subestima porque $f(x)=x^2+1$ es estrictamente creciente en $[0, 2]$; en una función decreciente ocurriría al revés, y en una constante ambas sumas serían iguales.  
+  > Al sumar las diferencias de los cuatro tramos con ancho uniforme, los puntos interiores se cancelan telescópicamente: $R_4 - L_4 = \Delta x [f(2) - f(0)] = 0{,}5 \times (5 - 1) = 2$.  
+  > Respondemos así la pregunta central: dos sumas sobre la misma partición pueden diferir porque la partición fija únicamente las bases, mientras que la elección del punto muestra determina las alturas evaluadas y sus aportes."*
 
 ---
 
 ### Bloque 5: Refinamiento, Integral y Cierre (3:55 – 4:45)
-* **Narrador:** Rodrigo Pedraza  
-* **Visual / Escena Manim (`CierreIntegral`):** Tabla de refinamiento con $n=4, 8, 16$. Se muestra cómo las áreas escalonadas se pegan a la curva y convergen al valor exacto de la integral $\frac{14}{3} \approx 4{,}6667$. Pantalla final con créditos completos y fuentes.  
+* **Narrador:** Rodrigo Pedraza *(rótulo visible en pantalla: «Narrador: Rodrigo Pedraza»)*  
+* **Visual / Escena Manim (`CierreIntegral`):** Tabla de refinamiento con $n=4, 8, 16$. Se muestra cómo al estrechar las bases las áreas escalonadas convergen al valor exacto de la integral $\frac{14}{3} \approx 4{,}67$. Pantalla final con las dos tarjetas de créditos completas (fuentes y verificación de IA).  
 * **Audio / Locución:**  
-  > *"¿Qué ocurre si refinamos la partición? Al aumentar $n$ a 8 y luego a 16 subintervalos, ahora sí estamos cambiando la partición: las bases se hacen cada vez más estrechas ($\Delta x \to 0$).  
-  > La suma izquierda sube hacia $4{,}42$ y la suma derecha baja hacia $4{,}92$. Como la función es continua, ambas aproximaciones quedan acotadas y convergen al mismo valor: el área exacta bajo la curva, dada por la integral definida $\int_0^2 (x^2+1)dx = 14/3$, aproximadamente $4{,}67$.  
-  > Concluimos así que sobre una partición fija las sumas difieren por la elección de alturas, pero al llevar el ancho de las bases al límite cero, la discrepancia desaparece y ambas revelan la misma integral de Riemann."*
+  > *"Finalmente, ¿cómo se conecta esto con la integral definida? Si refinamos la partición aumentando $n$ de 4 a 8 y a 16 subintervalos, ahora sí cambiamos la partición entre etapas, haciendo que el ancho $\Delta x$ tienda a cero.  
+  > Con ello, la suma izquierda sube de $3{,}75$ a $4{,}42$, la derecha baja de $5{,}75$ a $4{,}92$, y la diferencia se reduce de $2$ a $0{,}5$. Como $f(x)=x^2+1$ es continua en $[0, 2]$, al tender el ancho máximo a cero la discrepancia entre extremos desaparece y ambas aproximaciones convergen al mismo límite: el área exacta bajo la curva, dada por la integral definida $\int_0^2 (x^2+1)\,dx = 14/3 \approx 4{,}67$."*
 
 ---
 
 ## Resumen de Tiempos y Cobertura
 
-| Sección | Tiempo | Narrador | Minutos acumulados |
-| :--- | :---: | :---: | :---: |
-| Conceptos teóricos y pregunta | 65 s | Daniel Prado | 0:00 – 1:05 |
-| Construcción izquierda ($L_4$) | 55 s | Sebastian Pereda | 1:05 – 2:00 |
-| Construcción derecha ($R_4$) | 55 s | Sebastian Pereda | 2:00 – 2:55 |
-| Comparación causal $[1, 1{,}5]$ | 60 s | Rodrigo Pedraza | 2:55 – 3:55 |
-| Refinamiento, integral y créditos | 50 s | Rodrigo Pedraza | 3:55 – 4:45 |
-| **Total video** | **285 s** | **Equilibrio 3 voces** | **4 min 45 s** |
+| Sección | Tiempo | Narrador | Minutos acumulados | Criterios Rúbrica (`EID_calculo_intermedio (4).pdf`) |
+| :--- | :---: | :---: | :---: | :---: |
+| Conceptos teóricos y pregunta | 65 s | Daniel Prado | 0:00 – 1:05 | V1 (7 pts), V5, V6 |
+| Construcción izquierda ($L_4$) | 55 s | Sebastian Pereda | 1:05 – 2:00 | V2 (7 pts), V4, V5, V6 |
+| Construcción derecha ($R_4$) | 55 s | Sebastian Pereda | 2:00 – 2:55 | V2 (7 pts), V4, V5, V6 |
+| Comparación causal $[1, 1{,}5]$ | 60 s | Rodrigo Pedraza | 2:55 – 3:55 | V1.c/e, V3.a–d (5 pts), V4, V5, V6 |
+| Refinamiento, integral y créditos | 50 s | Rodrigo Pedraza | 3:55 – 4:45 | V3.e (1 pt), V6, V7 (3 pts) |
+| **Total video** | **285 s** | **Equilibrio 3 voces** | **4 min 45 s** | **Total Video: 40 / 40 pts** |
 
 
-## Ajuste técnico de las construcciones y créditos — 17 de octubre de 2026
+## Ajuste técnico de las construcciones y créditos — 18 de octubre de 2026
 
 Cada construcción dura 55 segundos sin audio: 0–7 s presentación de ejes y criterio; 7–17, 17–27, 27–37 y 37–47 s, un subintervalo por bloque. En cada bloque aparecen muestra (3 s), altura (3 s) y rectángulo con aporte (4 s). De 47–55 s aparece y permanece el total calculado a partir de los aportes. El panel derecho conserva los cuatro cálculos para leerlos juntos. Las pausas deben sincronizarse con la grabación de Sebastián; todavía no hay toma de voz validada.
 
-Los archivos de revisión aislada utilizan datos de prueba explícitos. Las escenas de producción ya consumen el modelo real integrado de Daniel.
+Los archivos de revisión aislada utilizan datos de prueba explícitos. Las escenas de producción consumen el modelo real (`src/matematica.py`).
 
-Créditos dentro del bloque final, sin ampliar los 285 segundos previstos:
+Créditos dentro del bloque final, sin ampliar los 285 segundos previstos (cumpliendo **V7.a, V7.b y V7.c**):
 - 3:55–4:30: explicación del refinamiento y conclusión (35 s).
-- 4:30–4:38: tarjeta 1 (8 s): «Grupo 2 · Cálculo Intermedio / Daniel Prado · Sebastian Pereda · Rodrigo Pedraza / Animación: Manim Community 0.22.0».
-- 4:38–4:45: tarjeta 2 (7 s): «Fuentes: Introducción a la integral (apunte del curso) / Stewart, Cálculo, 8.ª ed., §§5.1–5.2 / MIT OCW, 18.013A, cap. 20 / Referencias completas y uso de IA: repositorio del proyecto».
+- 4:30–4:38: tarjeta 1 (8 s): «Grupo 2 · Cálculo Intermedio (MAT1188) / Daniel Prado · Sebastian Pereda · Rodrigo Pedraza / Animación: Manim Community 0.22.0 · Paleta accesible Okabe-Ito».
+- 4:38–4:45: tarjeta 2 (7 s): «Fuentes: Apunte del curso "Introducción a la integral" · Stewart, Cálculo 8.ª ed. (§§5.1–5.2) · Kleitman, MIT OCW 18.013A (cap. 20) / Uso de IA (Codex): apoyo en código y guion, verificado con cálculo manual, pruebas unitarias e inspección de renders (detalle en repositorio)».
 
 Las tarjetas usarán texto blanco sobre negro, al menos 28 puntos en Manim y margen de 0.5 unidades; deben verificarse en el montaje final. Esta es una especificación editorial para el responsable del montaje, no una afirmación de que los créditos ya estén renderizados. La locución del cierre debe ensayarse para comprobar que cabe en los 35 segundos disponibles.
+
 
 
 ## Ejecución continua para ensayo — 18 de octubre de 2026
