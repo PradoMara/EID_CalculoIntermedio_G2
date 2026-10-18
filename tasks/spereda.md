@@ -119,11 +119,11 @@ Revisión del 17-10-2026: evidencia en [informes/spereda.md](../informes/spereda
 - Prioridad: alta: detectar omisiones antes de entregar
 - Detalles: Ver video completo y documentos, comprobar accesibilidad, correspondencia de valores/escenas, voces, fuentes e IA. Registrar errores con responsable; revalidar después de correcciones. Entregar: informes/revision_final.md. Requiere: T-017 en rpedraza.md: video ensamblado; T-008 en dprado.md: reproducción e integración.
 - Criterios de aceptación:
-  - [ ] Matriz V1–V8 y D1–D6 con evidencia ubicable y pendientes concretos.
+  - [ ] Matriz V1–V8 (40 pts) y M1–M3, C1 (70 pts) según `docs/EID_calculo_intermedio (4).pdf` con evidencia ubicable y pendientes concretos.
   - [ ] Duración medida 4–6 minutos, tres voces identificadas, créditos legibles.
   - [ ] Respuesta central, misma partición y condiciones matemáticas explícitas.
   - [ ] Cálculos, código, guion y video coinciden; no se aprueba con fallos pendientes relevantes.
-  - [ ] Revisión D1–D6 identifica preparación faltante; no sustituye los ensayos personales.
+  - [ ] Revisión M1–M3 y C1 identifica preparación faltante; no sustituye los ensayos personales.
 
 ## [ ] T-020 — Grabar voz, subir resumen y ensayar defensa
 - Prioridad: alta: participación y comprensión individual
