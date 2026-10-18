@@ -40,11 +40,11 @@ Z_ETIQUETAS = 6
 def crear_ejes():
     """T-028: Devuelve ejes Manim con rangos x in [0, 2] e y in [0, 5].
 
-    Garantiza escala fija en todas las escenas del grupo:
+    Define la escala base compartida antes de transformar la composición:
     ux = 9 / 2 = 4.5 unidades de escena por unidad x
     uy = 5.5 / 5 = 1.1 unidades de escena por unidad y
     """
-    from manim import Axes
+    from manim import Axes, Text, VGroup, LEFT, RIGHT, UP
 
     ejes = Axes(
         x_range=X_RANGE,
@@ -57,6 +57,14 @@ def crear_ejes():
             "stroke_width": 2,
         },
     )
+    rotulos = VGroup(
+        Text("x", font_size=22).next_to(ejes.c2p(2, 0), RIGHT, buff=0.15),
+        Text("y", font_size=22).next_to(ejes.c2p(0, 5), UP, buff=0.15),
+    )
+    for valor in range(1, 6):
+        rotulos.add(Text(str(valor), font_size=20, color=COLOR_EJES)
+                    .next_to(ejes.c2p(0, valor), LEFT, buff=0.15))
+    ejes.add(rotulos)
     ejes.set_z_index(Z_EJES)
     return ejes
 
@@ -83,17 +91,24 @@ def crear_grafica(ejes, funcion):
 
 def crear_marcas_particion(ejes, particion):
     """T-030: Devuelve marcas y etiquetas para cada límite de la partición."""
-    from manim import Text, VGroup, DOWN
+    from manim import Text, VGroup, DOWN, UP, Line
+    import numpy as np
 
     grupo = VGroup()
-    for p in particion:
-        punto_eje = ejes.c2p(p, 0)
-        etiqueta_texto = f"{p:g}" if isinstance(p, (int, float)) else str(p)
-        txt = Text(etiqueta_texto, font_size=20, color=COLOR_EJES)
-        txt.next_to(punto_eje, DOWN, buff=0.18)
-        txt.set_z_index(Z_ETIQUETAS)
-        grupo.add(txt)
-    return grupo
+    etiquetas_existentes = list(getattr(ejes.x_axis, "numbers", []))
+    marcas_existentes = list(ejes.x_axis.ticks)
+    for p in dict.fromkeys(particion):
+        punto = ejes.c2p(p, 0)
+        elementos = VGroup()
+        if not any(np.allclose(m.get_center(), punto) for m in marcas_existentes):
+            elementos.add(Line(punto + DOWN * 0.06, punto + UP * 0.06,
+                               color=COLOR_EJES))
+        if not any(np.isclose(t.get_value(), p) for t in etiquetas_existentes):
+            elementos.add(Text(f"{p:g}", font_size=20, color=COLOR_EJES)
+                           .next_to(punto, DOWN, buff=0.18))
+        if len(elementos):
+            grupo.add(elementos)
+    return grupo.set_z_index(Z_ETIQUETAS)
 
 
 def crear_rectangulo(ejes, dato, color):
@@ -146,147 +161,59 @@ def crear_marcadores_muestra(ejes, dato, color=None):
     return VGroup(linea_guia, punto_eje, punto_curva)
 
 
+def datos_construccion(criterio):
+    """Carga exclusivamente el modelo real; nunca sustituye errores por cifras."""
+    from src.matematica import funcion_ejemplo, PARTICION_EJEMPLO
+    from src.datos_rectangulos import preparar_datos_rectangulos
+    return preparar_datos_rectangulos(funcion_ejemplo, PARTICION_EJEMPLO, criterio)
+
+
+def animar_construccion(escena, datos, criterio):
+    """Presentación de 55 s; datos inyectables para revisión visual aislada."""
+    from manim import Text, VGroup, FadeIn, UP, DOWN, LEFT
+    from src.matematica import funcion_ejemplo, PARTICION_EJEMPLO
+
+    color = COLOR_IZQUIERDA if criterio == "izquierda" else COLOR_DERECHA
+    simbolo = "L₄" if criterio == "izquierda" else "R₄"
+    titulo = Text(f"Suma {criterio}: mismas bases, nuevas alturas", font_size=30).to_edge(UP)
+    ejes = crear_ejes()
+    escenario = VGroup(ejes, crear_grafica(ejes, funcion_ejemplo),
+                       crear_marcas_particion(ejes, PARTICION_EJEMPLO))
+    escenario.scale(0.72).to_edge(LEFT, buff=0.4).shift(DOWN * 0.45)
+    escena.add(titulo)
+    escena.play(FadeIn(escenario), run_time=1)
+    escena.wait(6)
+    for i, dato in enumerate(datos):
+        marcadores = crear_marcadores_muestra(ejes, dato, color)
+        rect = crear_rectangulo(ejes, dato, color)
+        y = 1.7 - i * 0.95
+        muestra = Text(f"[{dato['izquierda']:g}, {dato['derecha']:g}]   muestra: {dato['muestra']:g}",
+                       font_size=21).move_to([3.9, y, 0])
+        altura = Text(f"altura: {dato['altura']:g}", font_size=21).move_to([3.9, y-0.28, 0])
+        aporte = Text(f"aporte: {dato['ancho']:g} × {dato['altura']:g} = {dato['aporte']:g}",
+                      font_size=21, color=color).move_to([3.9, y-0.56, 0])
+        escena.play(FadeIn(marcadores[1]), FadeIn(muestra), run_time=1)
+        escena.wait(2)
+        escena.play(FadeIn(marcadores[0]), FadeIn(marcadores[2]), FadeIn(altura), run_time=1)
+        escena.wait(2)
+        escena.play(FadeIn(rect), FadeIn(aporte), run_time=1)
+        escena.wait(3)
+    total = sum(d['aporte'] for d in datos)
+    texto_total = Text(f"{simbolo} = {total:g}", font_size=32, color=color).move_to([3.9, -2.8, 0])
+    escena.play(FadeIn(texto_total), run_time=1)
+    escena.wait(7)
+
+
 try:
     from manim import Scene
-
-    class ConstruccionIzquierda(Scene):
-        """T-011: Escena Manim que anima la construcción de la suma izquierda (L_4 = 3.75)."""
-
-        def construct(self):
-            import sys
-            from pathlib import Path
-            raiz = Path(__file__).resolve().parent.parent.parent
-            if str(raiz) not in sys.path:
-                sys.path.insert(0, str(raiz))
-
-            from manim import FadeIn, LaggedStart, Text, VGroup, DOWN, RIGHT, UP
-            from src.matematica import funcion_ejemplo
-
-            try:
-                from src.matematica import crear_particion_uniforme, suma_riemann
-                particion = crear_particion_uniforme(0, 2, 4)
-                total_L4 = suma_riemann(funcion_ejemplo, particion, "izquierda")
-            except (ImportError, AttributeError):
-                particion = [0, 0.5, 1, 1.5, 2]
-                total_L4 = 3.75
-
-            from src.datos_rectangulos import preparar_datos_rectangulos
-
-            try:
-                datos = preparar_datos_rectangulos(funcion_ejemplo, particion, "izquierda")
-            except (ImportError, AttributeError):
-                # Fallback visual mientras Daniel termina T-026 en src.matematica
-                datos = [
-                    {"izquierda": 0.0, "derecha": 0.5, "muestra": 0.0, "altura": 1.0,
-                     "vertices_matematicos": [(0, 0), (0.5, 0), (0.5, 1), (0, 1)]},
-                    {"izquierda": 0.5, "derecha": 1.0, "muestra": 0.5, "altura": 1.25,
-                     "vertices_matematicos": [(0.5, 0), (1, 0), (1, 1.25), (0.5, 1.25)]},
-                    {"izquierda": 1.0, "derecha": 1.5, "muestra": 1.0, "altura": 2.0,
-                     "vertices_matematicos": [(1, 0), (1.5, 0), (1.5, 2), (1, 2)]},
-                    {"izquierda": 1.5, "derecha": 2.0, "muestra": 1.5, "altura": 3.25,
-                     "vertices_matematicos": [(1.5, 0), (2, 0), (2, 3.25), (1.5, 3.25)]},
-                ]
-
-            titulo = Text("Suma de Riemann: Extremos Izquierdos", font_size=32).to_edge(UP)
-            ejes = crear_ejes()
-            grafica = crear_grafica(ejes, funcion_ejemplo)
-            marcas = crear_marcas_particion(ejes, particion)
-
-            escenario = VGroup(ejes, grafica, marcas)
-            escenario.scale(0.85).shift(DOWN * 0.3)
-
-            self.add(titulo)
-            self.play(FadeIn(escenario))
-
-            rectangulos_animados = []
-            for dato in datos:
-                rect = crear_rectangulo(ejes, dato, COLOR_IZQUIERDA)
-                marcadores = crear_marcadores_muestra(ejes, dato, COLOR_IZQUIERDA)
-                sub_grupo = VGroup(rect, marcadores)
-                rectangulos_animados.append(sub_grupo)
-
-            self.play(
-                LaggedStart(
-                    *(FadeIn(r) for r in rectangulos_animados),
-                    lag_ratio=0.4,
-                    run_time=3.0,
-                )
-            )
-
-            texto_total = Text(f"L₄ = {total_L4:.2f}", font_size=30, color=COLOR_IZQUIERDA)
-            texto_total.to_corner(UP + RIGHT, buff=0.8)
-            self.play(FadeIn(texto_total))
-            self.wait(1.5)
-
-    class ConstruccionDerecha(Scene):
-        """T-033: Escena Manim que anima la construcción de la suma derecha (R_4 = 5.75)."""
-
-        def construct(self):
-            import sys
-            from pathlib import Path
-            raiz = Path(__file__).resolve().parent.parent.parent
-            if str(raiz) not in sys.path:
-                sys.path.insert(0, str(raiz))
-
-            from manim import FadeIn, LaggedStart, Text, VGroup, DOWN, RIGHT, UP
-            from src.matematica import funcion_ejemplo
-
-            try:
-                from src.matematica import crear_particion_uniforme, suma_riemann
-                particion = crear_particion_uniforme(0, 2, 4)
-                total_R4 = suma_riemann(funcion_ejemplo, particion, "derecha")
-            except (ImportError, AttributeError):
-                particion = [0, 0.5, 1, 1.5, 2]
-                total_R4 = 5.75
-
-            from src.datos_rectangulos import preparar_datos_rectangulos
-
-            try:
-                datos = preparar_datos_rectangulos(funcion_ejemplo, particion, "derecha")
-            except (ImportError, AttributeError):
-                # Fallback visual mientras Daniel termina T-026 en src.matematica
-                datos = [
-                    {"izquierda": 0.0, "derecha": 0.5, "muestra": 0.5, "altura": 1.25,
-                     "vertices_matematicos": [(0, 0), (0.5, 0), (0.5, 1.25), (0, 1.25)]},
-                    {"izquierda": 0.5, "derecha": 1.0, "muestra": 1.0, "altura": 2.0,
-                     "vertices_matematicos": [(0.5, 0), (1, 0), (1, 2), (0.5, 2)]},
-                    {"izquierda": 1.0, "derecha": 1.5, "muestra": 1.5, "altura": 3.25,
-                     "vertices_matematicos": [(1, 0), (1.5, 0), (1.5, 3.25), (1, 3.25)]},
-                    {"izquierda": 1.5, "derecha": 2.0, "muestra": 2.0, "altura": 5.0,
-                     "vertices_matematicos": [(1.5, 0), (2, 0), (2, 5), (1.5, 5)]},
-                ]
-
-            titulo = Text("Suma de Riemann: Extremos Derechos", font_size=32).to_edge(UP)
-            ejes = crear_ejes()
-            grafica = crear_grafica(ejes, funcion_ejemplo)
-            marcas = crear_marcas_particion(ejes, particion)
-
-            escenario = VGroup(ejes, grafica, marcas)
-            escenario.scale(0.85).shift(DOWN * 0.3)
-
-            self.add(titulo)
-            self.play(FadeIn(escenario))
-
-            rectangulos_animados = []
-            for dato in datos:
-                rect = crear_rectangulo(ejes, dato, COLOR_DERECHA)
-                marcadores = crear_marcadores_muestra(ejes, dato, COLOR_DERECHA)
-                sub_grupo = VGroup(rect, marcadores)
-                rectangulos_animados.append(sub_grupo)
-
-            self.play(
-                LaggedStart(
-                    *(FadeIn(r) for r in rectangulos_animados),
-                    lag_ratio=0.4,
-                    run_time=3.0,
-                )
-            )
-
-            texto_total = Text(f"R₄ = {total_R4:.2f}", font_size=30, color=COLOR_DERECHA)
-            texto_total.to_corner(UP + RIGHT, buff=0.8)
-            self.play(FadeIn(texto_total))
-            self.wait(1.5)
-
 except ImportError:
     ConstruccionIzquierda = None
     ConstruccionDerecha = None
+else:
+    class ConstruccionIzquierda(Scene):
+        def construct(self):
+            animar_construccion(self, datos_construccion("izquierda"), "izquierda")
+
+    class ConstruccionDerecha(Scene):
+        def construct(self):
+            animar_construccion(self, datos_construccion("derecha"), "derecha")

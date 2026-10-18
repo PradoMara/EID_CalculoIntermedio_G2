@@ -23,7 +23,7 @@ Por defecto el cuadro de Manim mide 8 unidades de alto y unas 14,22 de ancho (16
 
 ### Configurar `Axes` con escala fija
 
-La firma documentada es:
+Parámetros utilizados (esquema ilustrativo, no firma ejecutable):
 ```python
 Axes(x_range, y_range, x_length=12, y_length=6, axis_config, x_axis_config, y_axis_config, tips=True, **kwargs)
 ```
@@ -161,7 +161,7 @@ def make_markers(ax, x_star, y_h, color):
 
 ## 3. Diseño visual y accesibilidad
 
-Se utiliza el par azul–naranja de la paleta **Okabe–Ito** (Okabe & Ito, 2008), diseñada para distinguirse con cualquier forma de daltonismo y legible incluso en escala de grises. Se evita explícitamente el par conflictivo rojo–verde.
+Se utiliza el par azul–naranja de la paleta **Okabe–Ito** (Okabe & Ito, 2008), elegida para favorecer la distinción de categorías; no garantiza por sí sola accesibilidad para todas las personas ni en escala de grises. Se evita explícitamente el par conflictivo rojo–verde.
 
 ### Paleta y contrastes (WCAG 2.1)
 
@@ -173,7 +173,7 @@ Se utiliza el par azul–naranja de la paleta **Okabe–Ito** (Okabe & Ito, 2008
 | **Ejes** | `#BBBBBB` | `#555555` | Discretos, no compiten con los datos |
 | **Referencia ($\int = 14/3$)** | `#009E73` (verde azulado) | `#009E73` | Para el cierre de refinamiento |
 
-Todos los contrastes superan el criterio 1.4.11 de WCAG 2.1 (mínimo 3:1 para objetos gráficos).
+Los valores anteriores describen colores opacos. El relleno con opacidad 0.35 tiene otro contraste efectivo: no se declara conformidad WCAG del render completo. Los contornos, textos y posiciones aportan señales adicionales.
 
 **Señales redundantes (no depender solo del color):**
 * Rotular siempre con texto explícito: «Suma izquierda $L_4 = 3{,}75$» y «Suma derecha $R_4 = 5{,}75$».
@@ -245,3 +245,24 @@ class RiemannRectangle(Scene):
 | **Animación en cascada** | `manim.animation.composition.LaggedStart` | Aparición secuencial de rectángulos en la escena. |
 | **Orden y capas** | `manim.mobject.mobject.Mobject` | Propiedad `set_z_index` para control de superposición visual. |
 | **Configuración** | Guía de configuración oficial de Manim | Medidas de cuadro de escena (8 de alto, 14.22 de ancho en 16:9). |
+
+
+## 6. Implementación y revisión reproducible — 17 de octubre de 2026
+
+Versión ejecutada: Manim Community 0.22.0, coincidente con requirements.txt.
+Consulta de esta revisión (asistida por Codex):
+- [Axes: rangos, dimensiones y conversión de coordenadas](https://docs.manim.community/en/stable/reference/manim.mobject.graphing.coordinate_systems.Axes.html).
+- [Polygon: construcción a partir de vértices](https://docs.manim.community/en/stable/reference/manim.mobject.geometry.polygram.Polygon.html).
+
+Procedencia: los ejemplos anteriores son desarrollos didácticos del proyecto basados en estas APIs; no se presentan como ejemplos oficiales copiados ni como código ejecutado. La implementación ejecutada es src/escenas/construcciones.py. La revisión del 17 de octubre añadió con asistencia de Codex etiquetas Text, marcas, pruebas geométricas y animación por fases. Se usa Text para evitar depender de LaTeX; los ejemplos antiguos con include_numbers=True pueden requerir LaTeX y no son el comando de ejecución recomendado.
+
+La escala base sigue siendo 4.5 horizontal y 1.1 vertical. Las dos construcciones aplican 0.72, como ComparacionSumas: escala efectiva 3.24 horizontal y 0.792 vertical. CierreIntegral tiene otra composición (0.68); no se modificó el módulo de Rodrigo. Los rótulos se agrupan con los ejes para conservar su posición al transformarlos.
+
+Procedimiento:
+1. Ejecutar `.venv/bin/python -m unittest tests.test_datos_rectangulos tests.test_helpers_visuales -v`.
+2. Ejecutar `.venv/bin/python -m tests.render_construcciones_sebastian` para una revisión aislada, rotulada como tal, con el doble matemático de pruebas. No acredita integración.
+3. Inspeccionar cuadros iniciales, muestra, altura, aporte y cierre de ambos videos: rótulos dentro del cuadro, bases iguales, panel separado de la curva, totales correctos y guía alineada.
+4. Medir duración de cada archivo: 55 segundos previstos. Revisar posteriormente sincronía con la voz real y legibilidad en la resolución de entrega.
+5. Cuando esté disponible calcular_rectangulos, ejecutar las escenas de producción con `python -m manim render -ql src/escenas/construcciones.py ConstruccionIzquierda ConstruccionDerecha`. Ya no sustituyen importaciones fallidas por datos manuales.
+
+Resultados y límites de la revisión: informes/spereda.md. El audio y la validación humana de la defensa siguen pendientes.

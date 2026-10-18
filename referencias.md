@@ -34,7 +34,7 @@ El equipo consultó dos fuentes complementarias distintas y formalmente identifi
 
 ## 3. Herramientas de Animación y Software
 * **Manim Community Developers (2024–2026).**  
-  *Manim Community: A community-maintained Python library for creating mathematical animations* (v0.18+ / v0.21+).  
+  *Manim Community: A community-maintained Python library for creating mathematical animations* (v0.22.0, versión utilizada en esta revisión).
   Documentación oficial consultada en línea: [https://docs.manim.community/](https://docs.manim.community/).  
   *Módulos utilizados:*
   - `manim.mobject.graphing.coordinate_systems.Axes` (manejo de escalas fijas y método `coords_to_point` / `c2p`).

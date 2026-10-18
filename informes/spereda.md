@@ -1,41 +1,55 @@
 # Informe de Sebastian Pereda
 
-**Fecha de actualización:** 14 de octubre de 2026  
-**Rol:** Sublíder  
-**Estado:** Fases 1, 2 y 3 completadas (Investigación, Guion y Construcción Visual en Python/Manim)
+Actualización: 17 de octubre de 2026. Revisión y cambios asistidos por Codex.
+Este informe reemplaza las afirmaciones anteriores de cierre completo: los resultados aislados no acreditan integración ni revisión humana de la defensa.
 
----
+## Trabajo propio realizado
 
-## 1. Estado de Tareas Asignadas
+| Tareas | Resultado | Límite de cierre |
+| --- | --- | --- |
+| T-005 | Corregida la generalización sobre funciones no constantes; se conserva el ejemplo correcto L=3.75, R=5.75, diferencia=2 e integral=14/3. | La consulta personal de bibliografía y su comprensión deben ser ratificadas por Sebastián; no se inventa una revisión cruzada. |
+| T-010 | Documentada versión 0.22.0, procedencia de esta adaptación, referencias oficiales y procedimiento reproducible. | Los ejemplos didácticos del documento no equivalen a código ejecutado. |
+| T-006 | Ajustadas las fases de los bloques propios; créditos especificados con 15 s dentro de 4:45; referencia del apunte corregida sin atribución institucional inventada. | Montaje, locución real y legibilidad final de créditos pendientes. |
+| T-027 | Preparación geométrica verificada con cuatro pruebas aisladas. | Falta calcular_rectangulos de Daniel para integración real. |
+| T-028–T-032 | Ejes rotulados, marcas para particiones irregulares, prevención de duplicados existentes; pruebas de curva, coordenadas, vértices y guías. | Verificado con Manim real; no sustituye revisión del montaje conjunto. |
+| T-011 / T-033 | Muestra → altura → aporte → suma; 55 s por escena; panel de cálculos; total derivado de aportes. Eliminado respaldo silencioso con cifras manuales. | Escenas de producción esperan modelo real. Previsualización aislada disponible con aviso visible. |
+| T-012 | Pruebas ampliadas y revisión de renders documentada abajo. | El resultado no implica que toda la suite del grupo pase. |
+| T-013 / T-020 | No se declaran terminadas. | Video completo, voz propia, ensayo y validación humana pendientes. |
 
-| Tarea | Estado | Avance verificable | Pendiente / Próximo paso |
-| :--- | :---: | :--- | :--- |
-| **T-005: Fundamentos y ejemplo** | **Completada** | `investigacion/fundamentos_sebastian.md` y `guion/calculos.md`. Cálculos manuales verificados ($L_4=3{,}75$, $R_4=5{,}75$, dif$=2$, $\int=14/3$). Fuente complementaria: Stewart (2016). | Revisión cruzada con Rodrigo completada; valores 100% coincidentes. |
-| **T-010: Investigación Manim** | **Completada** | `investigacion/manim_sebastian.md`. Sistema de coordenadas `Axes` ($u_x=4{,}5$, $u_y=1{,}1$), `c2p`, geometría de polígonos, marcadores, paleta Okabe-Ito y contrastes WCAG. | Base de implementación para `construcciones.py`. |
-| **T-006: Integración del guion** | **Completada** | `guion/guion.md` y `referencias.md`. Guion de 4 min 45 s con reparto equitativo de voces (Daniel, Sebastian, Rodrigo) e integración de todas las fuentes formales. | Coordinado con Rodrigo para la locución y edición final. |
-| **T-027: `preparar_datos_rectangulos`** | **Completada** | `src/datos_rectangulos.py`. Procesa registros del modelo matemático y genera 4 vértices continuos en coordenadas matemáticas puras sin modificar las bases. | Verificado con pruebas unitarias en `tests/test_datos_rectangulos.py`. |
-| **T-028 a T-032: Helpers visuales** | **Completada** | `src/escenas/construcciones.py`: `crear_ejes`, `crear_grafica`, `crear_marcas_particion`, `crear_rectangulo` y `crear_marcadores_muestra`. | Compatible con imports desacoplados y listo para render. |
-| **T-011 / T-033: Escenas Manim** | **Completada** | `ConstruccionIzquierda` y `ConstruccionDerecha` en `src/escenas/construcciones.py`. Animan la aparición secuencial progresiva de rectángulos, aportes y totales ($L_4=3{,}75$ y $R_4=5{,}75$). | Listas para ensamblado en el video global. |
-| **T-012: Pruebas unitarias** | **Completada** | `tests/test_datos_rectangulos.py` (4 tests pasando: bases, alturas, aportes y vértices) y `tests/test_helpers_visuales.py` (configuración de escala y geometrías). | Todo validado con `python -m unittest`. |
-| **T-013: Auditoría final** | Pendiente | Matriz de criterios V1–V8 y D1–D6 estudiada. | Ejecutar sobre video integrado y documentos finales. |
-| **T-020: Grabación y defensa** | En curso | Locución definida en `guion/guion.md` (bloques 2 y 3: $L_4$ y $R_4$). Guía de estudio dominada. | Grabar audio propio y entregar a Rodrigo. |
+## Pruebas ejecutadas
 
----
+Desde la raíz con el entorno existente:
 
-## 2. Pruebas Unitarias Ejecutadas y Resultados
-
-Comando ejecutado:
 ```bash
-python3 -m unittest tests.test_datos_rectangulos -v
+.venv/bin/python -m unittest tests.test_datos_rectangulos tests.test_helpers_visuales -v
 ```
-Resultado: **4 pruebas ejecutadas, 4 exitosas (OK)**:
-* `test_cantidad_y_bases_compartidas`: Confirma que ambas sumas tienen 4 rectángulos y comparten idénticas bases de ancho $0{,}5$.
-* `test_muestras_y_alturas_ejemplo_oficial`: Confirma alturas izquierdas $[1{,}0, 1{,}25, 2{,}0, 3{,}25]$ y aportes $[0{,}5, 0{,}625, 1{,}0, 1{,}625]$; y alturas derechas $[1{,}25, 2{,}0, 3{,}25, 5{,}0]$ y aportes $[0{,}625, 1{,}0, 1{,}625, 2{,}5]$.
-* `test_subintervalo_critico_1_a_1_5`: Confirma que la base se mantiene en $[1{,}0, 1{,}5]$ con ancho $0{,}5$, y que la altura sube de $2{,}0$ a $3{,}25$.
-* `test_vertices_geometricos_no_trasladan_base`: Comprueba que los vértices formen un polígono cerrado continuo exacto sobre el eje horizontal.
 
-Comando ejecutado:
+Resultado: **12 pruebas, 12 correctas**, sin omisiones, Manim Community 0.22.0.
+Las cuatro de datos sustituyen src.matematica por un doble explícito. Las ocho de helpers incluyen objetos Manim reales y comprueban escala, rótulos, extremos de dos funciones distintas, marcas irregulares, duplicados, vértices, opacidad y posiciones de puntos/guías tras mover y escalar los ejes. También se comprueba que las dos escenas consumen los datos del proveedor y propagan errores, sin cifras de respaldo.
+
 ```bash
-python3 -m unittest tests.test_helpers_visuales -v
+.venv/bin/python -m unittest discover -s tests -t . -v
 ```
-Resultado: **Configuración de escala y constantes verificadas con éxito (OK)**.
+
+Resultado: **29 pruebas: 28 correctas y 1 error**. El error es test_ejemplo_con_modelo_real de tests/test_comparacion.py: no existe calcular_rectangulos en src/matematica.py. No se modificaron los módulos ni las pruebas de Daniel/Rodrigo para ocultarlo.
+
+## Revisión visual aislada
+
+```bash
+.venv/bin/python -m tests.render_construcciones_sebastian
+```
+
+El script utiliza el doble matemático de tests/test_datos_rectangulos.py exclusivamente para preparar datos de prueba. La animación es la misma que utilizarán las escenas de producción. Ambos videos incluyen «REVISIÓN AISLADA · datos de prueba · sin integración».
+
+Archivos locales regenerables (media/ está ignorado por Git):
+- media/revision_sebastian/videos/480p15/RevisionIzquierda.mp4
+- media/revision_sebastian/videos/480p15/RevisionDerecha.mp4
+
+Duración medida con PyAV: **55.0 segundos cada uno**, 854×480, 15 fps, sin audio.
+Inspección de fotogramas en 6, 9, 12, 16, 36 y 54 segundos de ambas escenas: título, rótulos x/y y valores dentro del cuadro; panel separado de la gráfica; muestra antes de altura y aporte; bases alineadas, cuatro aportes y total legibles. Totales: 3.75 y 5.75. Esta inspección de fotogramas no es una prueba unitaria ni una revisión audiovisual humana completa.
+
+Antes de entregar: render integrado con modelo real, calidad final y audio; comprobar sincronía con la toma de Sebastián. La locución del guion tiene 55 s asignados por construcción, pero no ha sido grabada ni medida.
+
+## Asistencia de IA y validación personal
+
+Codex ayudó a corregir fundamentos, documentación, helpers, animación y pruebas en esta revisión. Verificaciones realizadas por la herramienta: unitarias, render aislado, duración y fotogramas. No se afirma que Sebastián haya leído nuevas fuentes, dominado la guía, grabado voz o realizado un ensayo. Esos pasos personales permanecen pendientes de T-020. Este registro aporta los datos que necesita el responsable de consolidar declaracion_ia.md.
