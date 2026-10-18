@@ -59,7 +59,7 @@
 
 ### Bloque 4: Comparación Causal y Respuesta Central (2:55 – 3:55)
 * **Narrador:** Rodrigo Pedraza  
-* **Visual / Escena Manim (`DetalleIntervalo` y `ComparacionSumas`):** Primer plano en el subintervalo $[1, 1{,}5]$. Se resalta la base fija de $0{,}5$ y cómo la altura pasa de $2$ a $3{,}25$, elevando el aporte de $1{,}0$ a $1{,}625$. Luego vista comparativa lado a lado con la diferencia $R_4 - L_4 = 2$.  
+* **Visual / Escena Manim (`DetalleIntervalo` y `ComparacionSumas`):** Primer plano en el subintervalo $[1, 1{,}5]$. Se resalta la base fija de $0{,}5$ y cómo la altura pasa de $2$ a $3{,}25$, elevando el aporte de $1{,}0$ a $1{,}625$. Luego comparación sucesiva sobre los mismos ejes, conservando la escala, con la diferencia $R_4 - L_4 = 2$.
 * **Audio / Locución:**  
   > *"Soy Rodrigo Pedraza. Para responder a nuestra pregunta central, miremos con lupa el tercer subintervalo, entre 1 y $1{,}5$.  
   > Los cuatro intervalos y sus bases permanecen iguales. En cada uno movemos el punto muestra del extremo izquierdo al derecho. La base no se traslada en absoluto; sigue midiendo $0{,}5$. Pero como $f(x)=x^2+1$ es una función estrictamente creciente en este intervalo, evaluar en el extremo derecho produce una altura mayor: sube de 2 a $3{,}25$, y el aporte local pasa de 1 a $1{,}625$.  
@@ -94,7 +94,7 @@
 
 Cada construcción dura 55 segundos sin audio: 0–7 s presentación de ejes y criterio; 7–17, 17–27, 27–37 y 37–47 s, un subintervalo por bloque. En cada bloque aparecen muestra (3 s), altura (3 s) y rectángulo con aporte (4 s). De 47–55 s aparece y permanece el total calculado a partir de los aportes. El panel derecho conserva los cuatro cálculos para leerlos juntos. Las pausas deben sincronizarse con la grabación de Sebastián; todavía no hay toma de voz validada.
 
-Los archivos de revisión aislada utilizan datos de prueba explícitos. Las escenas de producción consumen el modelo real y su ejecución integrada queda pendiente de la dependencia matemática de Daniel.
+Los archivos de revisión aislada utilizan datos de prueba explícitos. Las escenas de producción ya consumen el modelo real integrado de Daniel.
 
 Créditos dentro del bloque final, sin ampliar los 285 segundos previstos:
 - 3:55–4:30: explicación del refinamiento y conclusión (35 s).
@@ -102,3 +102,20 @@ Créditos dentro del bloque final, sin ampliar los 285 segundos previstos:
 - 4:38–4:45: tarjeta 2 (7 s): «Fuentes: Introducción a la integral (apunte del curso) / Stewart, Cálculo, 8.ª ed., §§5.1–5.2 / MIT OCW, 18.013A, cap. 20 / Referencias completas y uso de IA: repositorio del proyecto».
 
 Las tarjetas usarán texto blanco sobre negro, al menos 28 puntos en Manim y margen de 0.5 unidades; deben verificarse en el montaje final. Esta es una especificación editorial para el responsable del montaje, no una afirmación de que los créditos ya estén renderizados. La locución del cierre debe ensayarse para comprobar que cabe en los 35 segundos disponibles.
+
+
+## Ejecución continua para ensayo — 18 de octubre de 2026
+
+`python run.py` genera PresentacionGuion como un solo video, sin voz grabada.
+La introducción se divide en pregunta/presentación (0:00–0:15), partición
+(0:15–0:40) y muestra/altura/aporte (0:40–1:05). Se reutilizan ambas
+construcciones de 55 s. El bloque causal se divide en DetalleIntervalo
+(2:55–3:25), ComparacionSumas (3:25–3:45) y respuesta con fórmula telescópica
+(3:45–3:55). CierreIntegral ocupa 3:55–4:30 y las tarjetas de créditos
+4:30–4:38 y 4:38–4:45.
+
+La comparación cambia de izquierda a derecha en los mismos ejes; no es una
+vista de dos gráficas simultáneas. Las animaciones de comparación y cierre
+se ralentizan para acompañar la explicación. Los controles del reproductor
+permiten pausar o volver atrás para estudiar. El reloj del video sirve como
+referencia de ensayo; no certifica sincronización con una toma de voz.
