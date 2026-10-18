@@ -9,6 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parent
 ESCENAS = {
     "guion": ("presentacion.py", "PresentacionGuion"),
+    "introduccion": ("introduccion.py", "IntroduccionRiemann"),
     "izquierda": ("construcciones.py", "ConstruccionIzquierda"),
     "derecha": ("construcciones.py", "ConstruccionDerecha"),
     "detalle": ("comparacion.py", "DetalleIntervalo"),

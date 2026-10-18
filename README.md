@@ -1,5 +1,13 @@
 # EID de Cálculo Intermedio — Grupo 2
 
+## Introducción para grabación
+
+La escena `src/escenas/introduccion.py` adapta los seis temas de `docs/introduccion/Anatomía_de_las_Sumas_de_Riemann.pdf` a objetos animados de Manim. Dura 65 segundos y utiliza los datos matemáticos compartidos. El guion con tiempos está en [guion/introduccion_grabacion.md](guion/introduccion_grabacion.md). El MP4 local, sin voz y en 1080p30, se entrega en `output/video/Introduccion_Riemann_Manim_1080p.mp4`; aún hay que grabar la voz y unirlo al resto del video.
+
+```powershell
+.\.venv\Scripts\python.exe -m manim render src/escenas/introduccion.py IntroduccionRiemann -r 1920,1080 --fps 30
+```
+
 Proyecto de la asignatura **MAT1188**, desarrollado con Manim Community.
 
 ## Integrantes

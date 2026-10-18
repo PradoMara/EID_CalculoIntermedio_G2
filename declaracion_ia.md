@@ -17,3 +17,7 @@ La IA apoyó redacción y programación; **no reemplaza las fuentes matemáticas
 - Editor del video: herramienta usada, clips/tomas, procedencia y licencias de música, imágenes, iconos o materiales externos, si se incorporan. El apunte y el material MIT son fuentes de contenido, no medios insertados en el video por ahora.
 
 No se ha declarado que ya existan tres voces, escenas finales, edición, créditos terminados, revisión de todos los miembros o entrega. Cuando esos hechos ocurran, se agregará evidencia específica sin alterar el historial anterior.
+
+## Introducción animada — 18 de octubre de 2026
+
+Codex apoyó la adaptación de `docs/introduccion/Anatomía_de_las_Sumas_de_Riemann.pdf` a una escena original de Manim (`src/escenas/introduccion.py`) y un guion de grabación (`guion/introduccion_grabacion.md`). El PDF de referencia muestra una marca Gemini Notebook; no se incorporaron sus imágenes al video. La escena utiliza el modelo matemático compartido del proyecto. La grabación de voz, revisión personal de Daniel y montaje final siguen pendientes; no se atribuyen verificaciones humanas aún no realizadas.
