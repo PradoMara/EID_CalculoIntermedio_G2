@@ -21,6 +21,21 @@ BLOQUES = (
 class PresentacionGuion(Scene):
     """Reutiliza las escenas reales y ajusta su ritmo al tiempo de locución."""
     factor_tiempo = 1.0
+    narrador = None
+
+    def clear(self):
+        """Conserva la identificación al cambiar tarjetas dentro de un bloque."""
+        super().clear()
+        if self.narrador:
+            rotulo = Text(f"Narrador: {self.narrador}", font_size=20)
+            rotulo.to_edge(UP, buff=0.12).set_z_index(100)
+            self.add(rotulo)
+        return self
+
+    def identificar(self, nombre):
+        self.narrador = nombre
+        self.clear()
+
 
     def _duracion(self, segundos):
         # Redondear hacia abajo permite completar cada bloque al cuadro exacto.
@@ -59,28 +74,33 @@ class PresentacionGuion(Scene):
             'Daniel Prado · Sebastian Pereda · Rodrigo Pedraza',
         ], 15)
         self.tarjeta('La partición fija las bases', [
-            'Función continua f en un intervalo [a, b]',
+            'f continua y no negativa: f(x) ≥ 0 en [a, b]',
             'P = {x₀, x₁, …, xₙ}',
             'Subintervalo: [xᵢ₋₁, xᵢ]',
             'Ancho: Δxᵢ = xᵢ − xᵢ₋₁',
         ], 25)
         self.tarjeta('La muestra determina la altura', [
-            'Elegimos x* dentro de cada subintervalo',
-            'Altura: f(x*)     Aporte: f(x*) × Δxᵢ',
+            'S = Σᵢ₌₁ⁿ f(xᵢ*) · Δxᵢ',
+            'Σ: sumar los n aportes rectangulares',
+            'xᵢ*: punto muestra dentro del subintervalo',
+            'f(xᵢ*): altura     Δxᵢ: ancho de la base',
             'Izquierda: x* = xᵢ₋₁     Derecha: x* = xᵢ',
             'Misma partición y mismas bases; pueden cambiar las alturas',
         ], 25)
 
     def creditos(self):
-        self.tarjeta('Grupo 2 · Cálculo Intermedio', [
+        self.tarjeta('Grupo 2 · Cálculo Intermedio (MAT1188)', [
             'Daniel Prado · Sebastian Pereda · Rodrigo Pedraza',
             'Animación: Manim Community 0.22.0',
+            'Paleta: Okabe–Ito',
         ], 8)
         self.tarjeta('Fuentes y recursos', [
             'Introducción a la integral · Apunte del curso',
             'Stewart · Cálculo, 8.ª ed. · Secciones 5.1–5.2',
-            'MIT OpenCourseWare · 18.013A · Capítulo 20',
-            'Referencias completas y uso de IA: repositorio del proyecto',
+            'Kleitman · MIT OCW 18.013A · Capítulo 20',
+            'IA: Codex · apoyo en código y guion',
+            'Verificación: cálculos, pruebas unitarias y renders',
+            'Detalle de fuentes, apoyos y verificaciones: repositorio',
         ], 7)
 
     def ejecutar_bloque(self, construir, duracion, factor=1):
@@ -96,9 +116,12 @@ class PresentacionGuion(Scene):
         self.clear()
 
     def construct(self):
+        self.identificar('Daniel Prado')
         self.ejecutar_bloque(self.introduccion, 65)
+        self.identificar('Sebastian Pereda')
         self.ejecutar_bloque(lambda: ConstruccionIzquierda.construct(self), 55)
         self.ejecutar_bloque(lambda: ConstruccionDerecha.construct(self), 55)
+        self.identificar('Rodrigo Pedraza')
         self.ejecutar_bloque(lambda: DetalleIntervalo.construct(self), 30, 30 / 7)
         self.ejecutar_bloque(lambda: ComparacionSumas.construct(self), 20, 20 / 7)
         self.ejecutar_bloque(lambda: self.tarjeta('¿Por qué cambian las sumas?', [
@@ -108,4 +131,5 @@ class PresentacionGuion(Scene):
             'La regla de selección determina las alturas.',
         ], 10), 10)
         self.ejecutar_bloque(lambda: CierreIntegral.construct(self), 35, 35 / 10.95)
+        self.identificar(None)
         self.ejecutar_bloque(self.creditos, 15)

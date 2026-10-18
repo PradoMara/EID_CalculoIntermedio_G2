@@ -87,7 +87,7 @@
 | Construcción derecha ($R_4$) | 55 s | Sebastian Pereda | 2:00 – 2:55 | V2 (7 pts), V4, V5, V6 |
 | Comparación causal $[1, 1{,}5]$ | 60 s | Rodrigo Pedraza | 2:55 – 3:55 | V1.c/e, V3.a–d (5 pts), V4, V5, V6 |
 | Refinamiento, integral y créditos | 50 s | Rodrigo Pedraza | 3:55 – 4:45 | V3.e (1 pt), V6, V7 (3 pts) |
-| **Total video** | **285 s** | **Equilibrio 3 voces** | **4 min 45 s** | **Total Video: 40 / 40 pts** |
+| **Total video** | **285 s** | **Equilibrio 3 voces** | **4 min 45 s** | **Máximo del video: 40 pts; evaluación pendiente** |
 
 
 ## Ajuste técnico de las construcciones y créditos — 18 de octubre de 2026
@@ -120,3 +120,15 @@ vista de dos gráficas simultáneas. Las animaciones de comparación y cierre
 se ralentizan para acompañar la explicación. Los controles del reproductor
 permiten pausar o volver atrás para estudiar. El reloj del video sirve como
 referencia de ensayo; no certifica sincronización con una toma de voz.
+
+
+### Implementación de la revisión del guion
+
+La presentación continua muestra el narrador correspondiente durante cada
+intervención, incluyendo cambios de tarjeta. La introducción incluye
+no negatividad, sumatoria, punto muestra, altura y ancho. Los créditos nombran
+Okabe–Ito, Kleitman y Codex, con finalidad y tipos de verificación. La mención
+de verificaciones describe cálculo, pruebas y renders; no certifica ensayos
+personales ni comprensión humana. El video sigue sin audio y debe contrastarse
+con las grabaciones reales; especialmente debe ensayarse la lectura de la
+segunda tarjeta de créditos, que conserva los 7 segundos del guion.

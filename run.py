@@ -50,7 +50,7 @@ def main():
     if seleccion == "guion":
         print("0:00 Daniel · 1:05 izquierda · 2:00 derecha · "
               "2:55 detalle · 3:25 comparación · 3:55 integral · 4:30 créditos")
-        print("Video continuo sin audio. Usen pausa y retroceso del reproductor para ensayar.")
+        print("Guion actualizado: narradores, fórmula general y créditos de fuentes e IA. Sin audio; validen la locución con el video.")
     resultado = subprocess.run(comando, cwd=ROOT)
     if resultado.returncode == 0:
         print(f"Videos guardados en: {ROOT / 'media' / 'videos' / Path(archivo).stem}")
