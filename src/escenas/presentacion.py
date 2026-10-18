@@ -1,7 +1,8 @@
 """Secuencia continua del guion, sin audio: 65 + 55 + 55 + 60 + 50 s."""
 import math
 
-from manim import Scene, Text, VGroup, FadeIn, DOWN, UP, config
+from manim import BLACK, Scene, Text, VGroup, FadeIn, DOWN, UP, config
+from src.escenas.introduccion import IntroduccionRiemann
 from src.escenas.construcciones import ConstruccionIzquierda, ConstruccionDerecha
 from src.escenas.comparacion import DetalleIntervalo, ComparacionSumas, CierreIntegral
 
@@ -18,7 +19,7 @@ BLOQUES = (
 )
 
 
-class PresentacionGuion(Scene):
+class PresentacionGuion(IntroduccionRiemann, Scene):
     """Reutiliza las escenas reales y ajusta su ritmo al tiempo de locución."""
     factor_tiempo = 1.0
     narrador = None
@@ -26,6 +27,7 @@ class PresentacionGuion(Scene):
     def clear(self):
         """Conserva la identificación al cambiar tarjetas dentro de un bloque."""
         super().clear()
+        self.camera.background_color = BLACK
         if self.narrador:
             rotulo = Text(f"Narrador: {self.narrador}", font_size=20)
             rotulo.to_edge(UP, buff=0.12).set_z_index(100)
@@ -35,7 +37,6 @@ class PresentacionGuion(Scene):
     def identificar(self, nombre):
         self.narrador = nombre
         self.clear()
-
 
     def _duracion(self, segundos):
         # Redondear hacia abajo permite completar cada bloque al cuadro exacto.
@@ -67,26 +68,8 @@ class PresentacionGuion(Scene):
         self.clear()
 
     def introduccion(self):
-        self.tarjeta('Grupo 2 · Cálculo Intermedio', [
-            'Extremos izquierdos y extremos derechos',
-            '¿Por qué dos sumas sobre la misma partición',
-            'pueden entregar valores distintos?',
-            'Daniel Prado · Sebastian Pereda · Rodrigo Pedraza',
-        ], 15)
-        self.tarjeta('La partición fija las bases', [
-            'f continua y no negativa: f(x) ≥ 0 en [a, b]',
-            'P = {x₀, x₁, …, xₙ}',
-            'Subintervalo: [xᵢ₋₁, xᵢ]',
-            'Ancho: Δxᵢ = xᵢ − xᵢ₋₁',
-        ], 25)
-        self.tarjeta('La muestra determina la altura', [
-            'S = Σᵢ₌₁ⁿ f(xᵢ*) · Δxᵢ',
-            'Σ: sumar los n aportes rectangulares',
-            'xᵢ*: punto muestra dentro del subintervalo',
-            'f(xᵢ*): altura     Δxᵢ: ancho de la base',
-            'Izquierda: x* = xᵢ₋₁     Derecha: x* = xᵢ',
-            'Misma partición y mismas bases; pueden cambiar las alturas',
-        ], 25)
+        self.identificar(None)
+        IntroduccionRiemann.construct(self)
 
     def creditos(self):
         self.tarjeta('Grupo 2 · Cálculo Intermedio (MAT1188)', [
@@ -115,12 +98,15 @@ class PresentacionGuion(Scene):
             self.wait(restante)
         self.clear()
 
-    def construct(self):
-        self.identificar('Daniel Prado')
+    def bloque_introduccion(self):
         self.ejecutar_bloque(self.introduccion, 65)
+
+    def bloque_desarrollo(self):
         self.identificar('Sebastian Pereda')
         self.ejecutar_bloque(lambda: ConstruccionIzquierda.construct(self), 55)
         self.ejecutar_bloque(lambda: ConstruccionDerecha.construct(self), 55)
+
+    def bloque_cierre(self):
         self.identificar('Rodrigo Pedraza')
         self.ejecutar_bloque(lambda: DetalleIntervalo.construct(self), 30, 30 / 7)
         self.ejecutar_bloque(lambda: ComparacionSumas.construct(self), 20, 20 / 7)
@@ -133,3 +119,23 @@ class PresentacionGuion(Scene):
         self.ejecutar_bloque(lambda: CierreIntegral.construct(self), 35, 35 / 10.95)
         self.identificar(None)
         self.ejecutar_bloque(self.creditos, 15)
+
+    def construct(self):
+        self.bloque_introduccion()
+        self.bloque_desarrollo()
+        self.bloque_cierre()
+
+
+class DesarrolloGuion(PresentacionGuion):
+    """Bloque de desarrollo (Sebastian Pereda): suma izquierda y suma derecha."""
+
+    def construct(self):
+        self.bloque_desarrollo()
+
+
+class CierreGuion(PresentacionGuion):
+    """Bloque de cierre (Rodrigo Pedraza): detalle, comparación, integral y créditos."""
+
+    def construct(self):
+        self.bloque_cierre()
+
