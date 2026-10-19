@@ -15,6 +15,11 @@
 - Rechazo de entradas inválidas (`ValueError`): criterio desconocido, intervalo con `izquierda>=derecha`, `n` inválido, límites no finitos o no numéricos, partición vacía, de un punto, duplicada o desordenada.
 - Ausencia de mutación de la partición recibida.
 
-### Pendientes
-- Cargar fuentes y declaración de uso de IA con verificación humana.
-- Consolidar informe al cerrar el resto de tareas (T-019).
+## Declaración de uso de IA
+
+Utilicé inteligencia artificial como apoyo para generar código y para obtener la función de ejemplo con la que trabajé. Codex me ayudó a generar código y Argon de Gemini me sugirió dicha función. Las pruebas unitarias y la revisión de la renderización las realicé manualmente.
+
+## Fuente consultada y verificación humana
+
+La fuente consultada fueron los apuntes de la asignatura proporcionados por la profesora(Apuntes.pdf). Revisé personalmente esos apuntes y los utilicé como referencia para el trabajo. No añadí otras fuentes externas.
+
